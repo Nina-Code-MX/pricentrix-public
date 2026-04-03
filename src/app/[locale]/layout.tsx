@@ -47,7 +47,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-16">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

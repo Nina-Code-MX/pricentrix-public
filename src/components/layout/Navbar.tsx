@@ -35,7 +35,7 @@ export function Navbar() {
     : 'text-white/70 hover:text-white';
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${headerBg}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link

@@ -8,7 +8,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden text-white py-24 px-5"
+      className="relative overflow-hidden text-white -mt-16 pt-40 pb-24 px-5"
       style={{
         background:
           'radial-gradient(circle at top center, rgba(59,130,246,.16), transparent 30%), linear-gradient(135deg, #0b1220 0%, #111827 55%, #1e293b 100%)',
@@ -17,7 +17,9 @@ export function Hero() {
       <div className="max-w-4xl mx-auto text-center">
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/10 text-blue-100 text-sm mb-6 backdrop-blur-sm">
-          <span className="w-5 h-5 rounded-full bg-brand-500/30 flex items-center justify-center text-xs">✦</span>
+          <span className="w-5 h-5 rounded-full bg-brand-500/30 flex items-center justify-center text-xs">
+            ✦
+          </span>
           {t('eyebrow')}
         </div>
 
