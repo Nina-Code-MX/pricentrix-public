@@ -1,41 +1,59 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, usePathname } from '@/i18n/routing';
 
 export function Navbar() {
   const t = useTranslations('nav');
   const locale = useLocale();
-  const pathname = usePathname(); // current path without locale prefix
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const headerBg = scrolled
+    ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm'
+    : 'bg-transparent border-b border-transparent';
+
+  const linkColor = scrolled
+    ? 'text-content-secondary hover:text-brand-600'
+    : 'text-white/90 hover:text-white';
+
+  const logoColor = scrolled ? 'text-content-primary' : 'text-white';
+
+  const burgerColor = scrolled ? 'text-content-secondary' : 'text-white';
+
+  const localeActive = scrolled ? 'bg-brand-100 text-brand-700' : 'bg-white/20 text-white';
+  const localeInactive = scrolled
+    ? 'text-content-muted hover:text-content-primary'
+    : 'text-white/70 hover:text-white';
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-bold text-xl text-content-primary tracking-tight">
+        <Link
+          href="/"
+          className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
+        >
           Pricentrix
         </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/#features"
-            className="text-sm text-content-secondary hover:text-brand-600 transition-colors"
-          >
+          <Link href="/#features" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('product')}
           </Link>
-          <Link
-            href="/blog"
-            className="text-sm text-content-secondary hover:text-brand-600 transition-colors"
-          >
+          <Link href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('blog')}
           </Link>
-          <Link
-            href="/contacto"
-            className="text-sm text-content-secondary hover:text-brand-600 transition-colors"
-          >
+          <Link href="/contacto" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('contact')}
           </Link>
         </div>
@@ -47,21 +65,25 @@ export function Navbar() {
             <Link
               href={pathname}
               locale="es"
-              className={`px-2 py-1 rounded transition-colors ${locale === 'es' ? 'bg-brand-100 text-brand-700' : 'text-content-muted hover:text-content-primary'}`}
+              className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'es' ? localeActive : localeInactive}`}
             >
               ES
             </Link>
             <Link
               href={pathname}
               locale="en"
-              className={`px-2 py-1 rounded transition-colors ${locale === 'en' ? 'bg-brand-100 text-brand-700' : 'text-content-muted hover:text-content-primary'}`}
+              className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'en' ? localeActive : localeInactive}`}
             >
               EN
             </Link>
           </div>
           <Link
             href="/contacto"
-            className="text-sm px-4 py-2 rounded-lg bg-brand-700 text-white hover:bg-brand-800 transition-colors font-medium"
+            className={`text-sm px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+              scrolled
+                ? 'bg-brand-700 text-white hover:bg-brand-800'
+                : 'bg-white text-brand-700 hover:bg-white/90'
+            }`}
           >
             {t('start')}
           </Link>
@@ -69,7 +91,7 @@ export function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-content-secondary"
+          className={`md:hidden p-2 transition-colors duration-300 ${burgerColor}`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -85,7 +107,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — always solid white when open */}
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-5 py-4 flex flex-col gap-4">
           <Link
