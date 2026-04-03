@@ -10,13 +10,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.1024.0",
     "gray-matter": "^4.0.3",
     "next": "16.2.2",
     "next-intl": "^4.9.0",
     "next-mdx-remote": "^6.0.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "resend": "^6.10.0"
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
