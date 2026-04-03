@@ -1,10 +1,10 @@
-import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/routing';
 
 export function Footer() {
   const t = useTranslations('footer');
   const locale = useLocale();
-  const base = locale === 'es' ? '' : `/${locale}`;
+  const pathname = usePathname();
   const year = new Date().getFullYear();
 
   return (
@@ -21,9 +21,15 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('product')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href={`${base}/#features`} className="hover:text-white transition-colors">{t('monitoring')}</Link>
-              <Link href={`${base}/#features`} className="hover:text-white transition-colors">{t('matching')}</Link>
-              <Link href={`${base}/#features`} className="hover:text-white transition-colors">{t('reports')}</Link>
+              <Link href="/#features" className="hover:text-white transition-colors">
+                {t('monitoring')}
+              </Link>
+              <Link href="/#features" className="hover:text-white transition-colors">
+                {t('matching')}
+              </Link>
+              <Link href="/#features" className="hover:text-white transition-colors">
+                {t('reports')}
+              </Link>
             </div>
           </div>
 
@@ -31,9 +37,15 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('company')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href={`${base}/contacto`} className="hover:text-white transition-colors">{t('contact')}</Link>
-              <Link href={`${base}/contacto`} className="hover:text-white transition-colors">{t('demo')}</Link>
-              <Link href={`${base}/contacto`} className="hover:text-white transition-colors">{t('support')}</Link>
+              <Link href="/contacto" className="hover:text-white transition-colors">
+                {t('contact')}
+              </Link>
+              <Link href="/contacto" className="hover:text-white transition-colors">
+                {t('demo')}
+              </Link>
+              <Link href="/contacto" className="hover:text-white transition-colors">
+                {t('support')}
+              </Link>
             </div>
           </div>
 
@@ -41,17 +53,41 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('account')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <a href="https://app.pricentrix.com/login" className="hover:text-white transition-colors">{t('login')}</a>
-              <a href="https://app.pricentrix.com/signup" className="hover:text-white transition-colors">{t('signup')}</a>
+              <a
+                href="https://app.pricentrix.com/login"
+                className="hover:text-white transition-colors"
+              >
+                {t('login')}
+              </a>
+              <a
+                href="https://app.pricentrix.com/signup"
+                className="hover:text-white transition-colors"
+              >
+                {t('signup')}
+              </a>
             </div>
           </div>
         </div>
 
         <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs">
-          <p>© {year} Pricentrix. {t('rights')}</p>
+          <p>
+            © {year} Pricentrix. {t('rights')}
+          </p>
           <div className="flex gap-3">
-            <Link href="/" className={`px-2 py-1 rounded transition-colors ${locale === 'es' ? 'text-white' : 'hover:text-white'}`}>ES</Link>
-            <Link href="/en" className={`px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-white' : 'hover:text-white'}`}>EN</Link>
+            <Link
+              href={pathname}
+              locale="es"
+              className={`px-2 py-1 rounded transition-colors ${locale === 'es' ? 'text-white' : 'hover:text-white'}`}
+            >
+              ES
+            </Link>
+            <Link
+              href={pathname}
+              locale="en"
+              className={`px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-white' : 'hover:text-white'}`}
+            >
+              EN
+            </Link>
           </div>
         </div>
       </div>
