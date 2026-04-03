@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
 
     await ses.send(
       new SendEmailCommand({
+        ConfigurationSetName: process.env.SES_CONFIGURATION_SET,
         Source: `Pricentrix Contact <${FROM_EMAIL}>`,
         Destination: { ToAddresses: [TO_EMAIL] },
         ReplyToAddresses: [email],
