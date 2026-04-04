@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   /* Brand / Primary */
@@ -48,4 +49,3 @@ body {
   color: var(--color-content-primary);
   line-height: 1.55;
 }
-

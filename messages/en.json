@@ -122,7 +122,10 @@
     "readMore": "Read article",
     "backToBlog": "← Back to blog",
     "noPostsLocale": "No articles available in this language yet.",
-    "publishedOn": "Published on"
+    "publishedOn": "Published on",
+    "author": "Author",
+    "tableOfContents": "Table of Contents",
+    "updatedOn": "Updated on"
   },
   "contact": {
     "title": "Let's talk",

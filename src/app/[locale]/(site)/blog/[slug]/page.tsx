@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getPostBySlug, getPostSlugs, getAlternatePosts } from '@/lib/blog';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { blogPostingSchema, breadcrumbSchema } from '@/lib/schemas';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
+import { TableOfContents } from '@/components/blog/TableOfContents';
+import { MdxContent } from '@/components/blog/MdxContent';
+import { extractHeadings } from '@/lib/heading-id';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
 
@@ -77,65 +79,109 @@ export default async function BlogPostPage({
     { name: post.title, url: `${localeBase}/blog/${post.slug}` },
   ];
 
+  const headings = extractHeadings(post.content);
+
   return (
     <>
       <JsonLd schema={blogPostingSchema(post, locale)} />
       <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
 
-      <div className="max-w-3xl mx-auto px-5 py-16">
+      <div className="max-w-4xl mx-auto px-5 py-12">
         {/* Back link */}
         <Link
           href="/blog"
-          className="text-sm text-brand-600 hover:text-brand-800 transition-colors mb-8 inline-block"
+          className="text-sm text-brand-600 hover:text-brand-800 transition-colors mb-10 inline-flex items-center gap-1 font-medium"
         >
           {t('backToBlog')}
         </Link>
 
-        {/* Header */}
-        <header className="mb-10">
+        {/* Article header */}
+        <header className="mt-8 mb-0">
+          {/* Tags */}
           {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-2 mb-5">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full"
+                  className="text-xs bg-brand-50 text-brand-700 border border-brand-100 px-3 py-1 rounded-full font-medium tracking-wide uppercase"
                 >
                   {tag}
                 </span>
               ))}
             </div>
           )}
-          <h1 className="text-3xl md:text-4xl font-bold text-content-primary mb-4 leading-tight">
+
+          {/* Title */}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-content-primary mb-5 leading-tight tracking-tight">
             {post.title}
           </h1>
-          <p className="text-content-secondary mb-4">{post.description}</p>
-          <div className="flex items-center gap-3 text-sm text-content-muted">
-            {post.author && <span>{post.author}</span>}
-            {post.author && <span>·</span>}
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString(locale, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
+
+          {/* Description / subtitle */}
+          <p className="text-xl text-content-secondary leading-relaxed mb-8">{post.description}</p>
+
+          {/* Author (left) + Date (right) — two-column row */}
+          <div className="grid grid-cols-2 gap-4 py-5 border-t border-b border-surface-tertiary">
+            <div>
+              <p className="text-xs text-content-muted uppercase tracking-wide mb-1">
+                {t('author')}
+              </p>
+              {post.author ? (
+                post.authorUrl ? (
+                  <a
+                    href={post.authorUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-content-primary hover:text-brand-600 transition-colors"
+                  >
+                    {post.author}
+                  </a>
+                ) : (
+                  <span className="font-semibold text-content-primary">{post.author}</span>
+                )
+              ) : (
+                <span className="font-semibold text-content-muted">—</span>
+              )}
+            </div>
+            <div className="text-right">
+              <p className="text-xs text-content-muted uppercase tracking-wide mb-1">
+                {t('publishedOn')}
+              </p>
+              <time dateTime={post.date} className="font-semibold text-content-primary">
+                {new Date(post.date).toLocaleDateString(locale, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+              {post.dateModified && post.dateModified !== post.date && (
+                <p className="text-xs text-content-muted mt-1">
+                  {t('updatedOn')}{' '}
+                  {new Date(post.dateModified).toLocaleDateString(locale, {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </p>
+              )}
+            </div>
           </div>
         </header>
 
-        {/* Cover image */}
+        {/* Cover image (optional, below author/date) */}
         {post.image && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={post.image}
             alt={post.title}
-            className="w-full rounded-2xl mb-10 object-cover max-h-96"
+            className="w-full rounded-2xl mt-8 mb-2 object-cover max-h-[30rem] shadow-md"
           />
         )}
 
-        {/* MDX Content */}
-        <article className="prose prose-gray max-w-none prose-headings:text-content-primary prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline">
-          <MDXRemote source={post.content} />
-        </article>
+        {/* Table of Contents */}
+        <TableOfContents headings={headings} title={t('tableOfContents')} />
+
+        {/* Article Content */}
+        <MdxContent source={post.content} />
       </div>
     </>
   );

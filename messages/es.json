@@ -122,7 +122,10 @@
     "readMore": "Leer artículo",
     "backToBlog": "← Volver al blog",
     "noPostsLocale": "No hay artículos disponibles en este idioma todavía.",
-    "publishedOn": "Publicado el"
+    "publishedOn": "Publicado el",
+    "author": "Autor",
+    "tableOfContents": "Tabla de contenido",
+    "updatedOn": "Actualizado el"
   },
   "contact": {
     "title": "Hablemos",
