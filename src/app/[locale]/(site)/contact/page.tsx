@@ -2,9 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { useState, FormEvent } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { ReCaptchaProvider } from '@/components/ReCaptchaProvider';
 
-export default function ContactPage() {
+function ContactForm() {
   const t = useTranslations('contact');
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -17,6 +20,7 @@ export default function ContactPage() {
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
       company: (form.elements.namedItem('company') as HTMLInputElement).value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+      recaptchaToken: executeRecaptcha ? await executeRecaptcha('contact') : '',
     };
 
     try {
@@ -125,5 +129,13 @@ export default function ContactPage() {
         </form>
       )}
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <ReCaptchaProvider>
+      <ContactForm />
+    </ReCaptchaProvider>
   );
 }

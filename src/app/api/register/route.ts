@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { locale, ...fields } = body;
+  const { locale, recaptchaToken, ...fields } = body;
+
+  if (!(await verifyRecaptcha(recaptchaToken ?? ''))) {
+    return NextResponse.json({ error: 'reCAPTCHA verification failed' }, { status: 400 });
+  }
 
   const res = await fetch(
     `https://app.pricentrix.com/api/auth/public-register?locale=${locale ?? 'es'}`,

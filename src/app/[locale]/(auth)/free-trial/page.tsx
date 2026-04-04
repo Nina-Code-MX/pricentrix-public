@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useLocale, useTranslations } from 'next-intl';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { ReCaptchaProvider } from '@/components/ReCaptchaProvider';
 
 type FormValues = {
   account_name: string;
@@ -22,9 +24,10 @@ const passwordRules = [
   { key: 'passwordReqSymbol', test: (v: string) => /[^A-Za-z0-9]/.test(v) },
 ] as const;
 
-export default function FreeTrialPage() {
+function FreeTrialForm() {
   const t = useTranslations('register');
   const locale = useLocale();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [serverError, setServerError] = useState<string | null>(null);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -70,10 +73,11 @@ export default function FreeTrialPage() {
     try {
       const { confirm_password, ...fields } = values;
       void confirm_password;
+      const recaptchaToken = executeRecaptcha ? await executeRecaptcha('register') : '';
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, locale }),
+        body: JSON.stringify({ ...fields, locale, recaptchaToken }),
       });
       const data = await res.json();
       if (!res.ok || data.error) {
@@ -212,6 +216,14 @@ export default function FreeTrialPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function FreeTrialPage() {
+  return (
+    <ReCaptchaProvider>
+      <FreeTrialForm />
+    </ReCaptchaProvider>
   );
 }
 
