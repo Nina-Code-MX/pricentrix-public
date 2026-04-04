@@ -119,7 +119,12 @@ export default function FreeTrialPage() {
           <h2 className="text-2xl font-bold text-content-primary mb-1">{t('formTitle')}</h2>
           <p className="text-content-secondary text-sm mb-8">{t('formSubtitle')}</p>
 
-          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            className="space-y-4"
+            suppressHydrationWarning
+          >
             <Field label={t('accountNameLabel')} error={errors.account_name?.message}>
               <input
                 {...register('account_name')}

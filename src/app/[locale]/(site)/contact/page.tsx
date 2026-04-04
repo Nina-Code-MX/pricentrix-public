@@ -43,7 +43,7 @@ export default function ContactPage() {
           <p className="text-content-secondary">{t('successDesc')}</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5" suppressHydrationWarning>
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-content-primary mb-1">

@@ -1,11 +1,14 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 
-const ses = new SESClient({
-  region: process.env.AWS_SES_REGION ?? 'us-east-1',
-  credentials: {
-    accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SES_SECRET_ACCESS_KEY!,
+// AWS SES SMTP transport — credentials are SMTP-specific (not IAM SDK keys)
+const transporter = nodemailer.createTransport({
+  host: `email-smtp.${process.env.AWS_SES_REGION ?? 'us-east-1'}.amazonaws.com`,
+  port: 587,
+  secure: false, // STARTTLS
+  auth: {
+    user: process.env.AWS_SES_ACCESS_KEY_ID,
+    pass: process.env.AWS_SES_SECRET_ACCESS_KEY,
   },
 });
 
@@ -20,24 +23,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    await ses.send(
-      new SendEmailCommand({
-        ConfigurationSetName: process.env.SES_CONFIGURATION_SET,
-        Source: `Pricentrix Contact <${FROM_EMAIL}>`,
-        Destination: { ToAddresses: [TO_EMAIL] },
-        ReplyToAddresses: [email],
-        Message: {
-          Subject: {
-            Data: `[Pricentrix] Nuevo mensaje de ${name}${company ? ` — ${company}` : ''}`,
-          },
-          Body: {
-            Text: {
-              Data: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company || '—'}\n\nMensaje:\n${message}`,
-            },
-          },
-        },
-      })
-    );
+    await transporter.sendMail({
+      from: `Pricentrix Contact <${FROM_EMAIL}>`,
+      to: TO_EMAIL,
+      replyTo: email,
+      subject: `[Pricentrix] Nuevo mensaje de ${name}${company ? ` — ${company}` : ''}`,
+      text: `Nombre: ${name}\nEmail: ${email}\nEmpresa: ${company || '—'}\n\nMensaje:\n${message}`,
+    });
 
     return NextResponse.json({ ok: true });
   } catch (err) {
