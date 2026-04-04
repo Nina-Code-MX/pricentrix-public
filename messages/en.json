@@ -176,6 +176,13 @@
     "passwordNumber": "Must contain at least one number",
     "passwordSymbol": "Must contain at least one symbol",
     "passwordMatch": "Passwords do not match",
+    "passwordReqTitle": "Password must include:",
+    "passwordReqMin": "At least 8 characters",
+    "passwordReqUpper": "One uppercase letter",
+    "passwordReqNumber": "One number",
+    "passwordReqSymbol": "One symbol (!@#$...)",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "tagline": "Price intelligence for Latin American ecommerce"
   }
 }

@@ -176,6 +176,13 @@
     "passwordNumber": "Debe contener al menos un número",
     "passwordSymbol": "Debe contener al menos un símbolo",
     "passwordMatch": "Las contraseñas no coinciden",
+    "passwordReqTitle": "La contraseña debe tener:",
+    "passwordReqMin": "Mínimo 8 caracteres",
+    "passwordReqUpper": "Una letra mayúscula",
+    "passwordReqNumber": "Un número",
+    "passwordReqSymbol": "Un símbolo (!@#$...)",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
     "tagline": "Inteligencia de precios para el ecommerce latinoamericano"
   }
 }

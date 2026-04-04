@@ -15,11 +15,20 @@ type FormValues = {
   confirm_password: string;
 };
 
+const passwordRules = [
+  { key: 'passwordReqMin', test: (v: string) => v.length >= 8 },
+  { key: 'passwordReqUpper', test: (v: string) => /[A-Z]/.test(v) },
+  { key: 'passwordReqNumber', test: (v: string) => /[0-9]/.test(v) },
+  { key: 'passwordReqSymbol', test: (v: string) => /[^A-Za-z0-9]/.test(v) },
+] as const;
+
 export default function FreeTrialPage() {
   const t = useTranslations('register');
   const locale = useLocale();
   const [serverError, setServerError] = useState<string | null>(null);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // Side-effect redirect lives in useEffect to satisfy React Compiler rules
   useEffect(() => {
@@ -48,10 +57,13 @@ export default function FreeTrialPage() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
+
+  const passwordValue = watch('password', '');
 
   const onSubmit = async (values: FormValues) => {
     setServerError(null);
@@ -146,20 +158,25 @@ export default function FreeTrialPage() {
             </Field>
 
             <Field label={t('passwordLabel')} error={errors.password?.message}>
-              <input
-                {...register('password')}
-                type="password"
+              <PasswordInput
+                registration={register('password')}
                 placeholder={t('passwordPlaceholder')}
-                className={inputClass(!!errors.password)}
+                hasError={!!errors.password}
+                show={showPassword}
+                onToggle={() => setShowPassword((v) => !v)}
+                ariaLabel={showPassword ? t('hidePassword') : t('showPassword')}
               />
+              <PasswordChecklist value={passwordValue} t={t} />
             </Field>
 
             <Field label={t('confirmPasswordLabel')} error={errors.confirm_password?.message}>
-              <input
-                {...register('confirm_password')}
-                type="password"
+              <PasswordInput
+                registration={register('confirm_password')}
                 placeholder={t('confirmPasswordPlaceholder')}
-                className={inputClass(!!errors.confirm_password)}
+                hasError={!!errors.confirm_password}
+                show={showConfirm}
+                onToggle={() => setShowConfirm((v) => !v)}
+                ariaLabel={showConfirm ? t('hidePassword') : t('showPassword')}
               />
             </Field>
 
@@ -190,6 +207,104 @@ export default function FreeTrialPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function PasswordInput({
+  registration,
+  placeholder,
+  hasError,
+  show,
+  onToggle,
+  ariaLabel,
+}: {
+  registration: ReturnType<ReturnType<typeof useForm<FormValues>>['register']>;
+  placeholder: string;
+  hasError: boolean;
+  show: boolean;
+  onToggle: () => void;
+  ariaLabel: string;
+}) {
+  return (
+    <div className="relative">
+      <input
+        {...registration}
+        type={show ? 'text' : 'password'}
+        placeholder={placeholder}
+        className={`${inputClass(hasError)} pr-11`}
+      />
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-label={ariaLabel}
+        className="absolute inset-y-0 right-3 flex items-center text-content-muted hover:text-content-secondary transition-colors"
+      >
+        {show ? (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+            />
+          </svg>
+        ) : (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        )}
+      </button>
+    </div>
+  );
+}
+
+function PasswordChecklist({
+  value,
+  t,
+}: {
+  value: string;
+  t: ReturnType<typeof useTranslations<'register'>>;
+}) {
+  if (!value) return null;
+  return (
+    <ul className="mt-2 space-y-1">
+      <li className="text-xs font-medium text-content-muted mb-1">{t('passwordReqTitle')}</li>
+      {passwordRules.map(({ key, test }) => {
+        const met = test(value);
+        return (
+          <li
+            key={key}
+            className={`flex items-center gap-2 text-xs ${met ? 'text-green-600' : 'text-content-muted'}`}
+          >
+            <span
+              className={`flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${met ? 'bg-green-100' : 'bg-gray-100'}`}
+            >
+              {met ? (
+                <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 12 12">
+                  <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
+                </svg>
+              ) : (
+                <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 8 8">
+                  <circle cx="4" cy="4" r="3" />
+                </svg>
+              )}
+            </span>
+            {t(key)}
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
