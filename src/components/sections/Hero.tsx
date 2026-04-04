@@ -1,11 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export function Hero() {
   const t = useTranslations('hero');
-  const locale = useLocale();
-  const base = locale === 'es' ? '' : `/${locale}`;
 
   return (
     <section
@@ -59,13 +57,13 @@ export function Hero() {
         {/* CTAs */}
         <div className="flex flex-wrap gap-3 justify-center">
           <Link
-            href={`${base}/contacto`}
+            href="/free-trial"
             className="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors shadow-lg"
           >
             {t('ctaPrimary')}
           </Link>
           <Link
-            href={`${base}/contacto`}
+            href="/contacto"
             className="px-6 py-3 rounded-xl border border-white/20 text-white hover:bg-white/10 font-semibold transition-colors backdrop-blur-sm"
           >
             {t('ctaSecondary')}

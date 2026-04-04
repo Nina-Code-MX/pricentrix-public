@@ -6,6 +6,10 @@ export const routing = defineRouting({
   defaultLocale: 'es',
   localePrefix: 'as-needed', // / = es, /en = en
   pathnames: {
+    '/': '/',
+    '/blog': '/blog',
+    '/blog/[slug]': '/blog/[slug]',
+    '/contacto': '/contacto',
     '/free-trial': {
       es: '/prueba-gratis',
       en: '/free-trial',

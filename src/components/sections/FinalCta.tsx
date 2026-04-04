@@ -1,10 +1,8 @@
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export function FinalCta() {
   const t = useTranslations('cta');
-  const locale = useLocale();
-  const base = locale === 'es' ? '' : `/${locale}`;
 
   return (
     <section className="py-24 px-5 bg-dark-900 text-white text-center">
@@ -18,7 +16,7 @@ export function FinalCta() {
         </div>
 
         <Link
-          href={`${base}/contacto`}
+          href="/contacto"
           className="inline-block px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-lg transition-colors shadow-lg"
         >
           {t('button')}

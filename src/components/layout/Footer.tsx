@@ -1,8 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import NextLink from 'next/link';
-import { usePathname, useRouter } from '@/i18n/routing';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 
 export function Footer() {
@@ -12,7 +11,8 @@ export function Footer() {
   const router = useRouter();
   const year = new Date().getFullYear();
 
-  const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const switchLocale = (next: Locale) => router.replace(pathname as any, { locale: next });
 
   return (
     <footer className="bg-dark-800 text-gray-400 pt-16 pb-8 mt-auto">
@@ -26,30 +26,39 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('product')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <NextLink href="/#features" className="hover:text-white transition-colors">
+              <Link
+                href={{ pathname: '/', hash: 'features' }}
+                className="hover:text-white transition-colors"
+              >
                 {t('monitoring')}
-              </NextLink>
-              <NextLink href="/#features" className="hover:text-white transition-colors">
+              </Link>
+              <Link
+                href={{ pathname: '/', hash: 'features' }}
+                className="hover:text-white transition-colors"
+              >
                 {t('matching')}
-              </NextLink>
-              <NextLink href="/#features" className="hover:text-white transition-colors">
+              </Link>
+              <Link
+                href={{ pathname: '/', hash: 'features' }}
+                className="hover:text-white transition-colors"
+              >
                 {t('reports')}
-              </NextLink>
+              </Link>
             </div>
           </div>
 
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('company')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <NextLink href="/contacto" className="hover:text-white transition-colors">
+              <Link href="/contacto" className="hover:text-white transition-colors">
                 {t('contact')}
-              </NextLink>
-              <NextLink href="/contacto" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/contacto" className="hover:text-white transition-colors">
                 {t('demo')}
-              </NextLink>
-              <NextLink href="/contacto" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/contacto" className="hover:text-white transition-colors">
                 {t('support')}
-              </NextLink>
+              </Link>
             </div>
           </div>
 
@@ -63,7 +72,7 @@ export function Footer() {
                 {t('login')}
               </a>
               <a
-                href="https://app.pricentrix.com/signup"
+                href="https://app.pricentrix.com/register"
                 className="hover:text-white transition-colors"
               >
                 {t('signup')}

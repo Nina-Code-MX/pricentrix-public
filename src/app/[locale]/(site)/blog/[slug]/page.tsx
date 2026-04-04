@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getPostBySlug, getPostSlugs, getAlternatePosts } from '@/lib/blog';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { blogPostingSchema, breadcrumbSchema } from '@/lib/schemas';
 import { routing } from '@/i18n/routing';
+import { Link } from '@/i18n/routing';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
 
@@ -69,15 +69,12 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const t = await getTranslations({ locale, namespace: 'blog' });
-  const base = locale === 'es' ? '' : `/${locale}`;
+  const localeBase = locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`;
 
   const breadcrumbs = [
     { name: 'Home', url: locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}` },
-    { name: t('title'), url: `${locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`}/blog` },
-    {
-      name: post.title,
-      url: `${locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`}/blog/${post.slug}`,
-    },
+    { name: t('title'), url: `${localeBase}/blog` },
+    { name: post.title, url: `${localeBase}/blog/${post.slug}` },
   ];
 
   return (
@@ -88,7 +85,7 @@ export default async function BlogPostPage({
       <div className="max-w-3xl mx-auto px-5 py-16">
         {/* Back link */}
         <Link
-          href={`${base}/blog`}
+          href="/blog"
           className="text-sm text-brand-600 hover:text-brand-800 transition-colors mb-8 inline-block"
         >
           {t('backToBlog')}
