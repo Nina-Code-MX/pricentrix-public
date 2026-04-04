@@ -2,12 +2,14 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { Link, usePathname } from '@/i18n/routing';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
+import type { Locale } from '@/i18n/routing';
 
 export function Navbar() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -17,18 +19,16 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
+
   const headerBg = scrolled
     ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm'
     : 'bg-transparent border-b border-transparent';
-
   const linkColor = scrolled
     ? 'text-content-secondary hover:text-brand-600'
     : 'text-white/90 hover:text-white';
-
   const logoColor = scrolled ? 'text-content-primary' : 'text-white';
-
   const burgerColor = scrolled ? 'text-content-secondary' : 'text-white';
-
   const localeActive = scrolled ? 'bg-brand-100 text-brand-700' : 'bg-white/20 text-white';
   const localeInactive = scrolled
     ? 'text-content-muted hover:text-content-primary'
@@ -37,7 +37,6 @@ export function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-        {/* Logo */}
         <Link
           href="/"
           className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
@@ -45,7 +44,6 @@ export function Navbar() {
           Pricentrix
         </Link>
 
-        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
           <Link href="/#features" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('product')}
@@ -58,24 +56,20 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Right side: locale toggle + CTA */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Locale switcher — preserves current page */}
           <div className="flex items-center gap-1 text-xs font-medium">
-            <Link
-              href={pathname}
-              locale="es"
+            <button
+              onClick={() => switchLocale('es')}
               className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'es' ? localeActive : localeInactive}`}
             >
               ES
-            </Link>
-            <Link
-              href={pathname}
-              locale="en"
+            </button>
+            <button
+              onClick={() => switchLocale('en')}
               className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'en' ? localeActive : localeInactive}`}
             >
               EN
-            </Link>
+            </button>
           </div>
           <Link
             href="/contacto"
@@ -89,7 +83,6 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           className={`md:hidden p-2 transition-colors duration-300 ${burgerColor}`}
           onClick={() => setOpen(!open)}
@@ -107,7 +100,6 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu — always solid white when open */}
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-5 py-4 flex flex-col gap-4">
           <Link
@@ -132,20 +124,24 @@ export function Navbar() {
             {t('contact')}
           </Link>
           <div className="flex gap-2 pt-2 border-t border-gray-100">
-            <Link
-              href={pathname}
-              locale="es"
+            <button
+              onClick={() => {
+                switchLocale('es');
+                setOpen(false);
+              }}
               className={`text-xs px-2 py-1 rounded ${locale === 'es' ? 'bg-brand-100 text-brand-700' : 'text-content-muted'}`}
             >
               ES
-            </Link>
-            <Link
-              href={pathname}
-              locale="en"
+            </button>
+            <button
+              onClick={() => {
+                switchLocale('en');
+                setOpen(false);
+              }}
               className={`text-xs px-2 py-1 rounded ${locale === 'en' ? 'bg-brand-100 text-brand-700' : 'text-content-muted'}`}
             >
               EN
-            </Link>
+            </button>
           </div>
           <Link
             href="/contacto"

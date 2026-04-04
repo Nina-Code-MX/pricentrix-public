@@ -1,25 +1,27 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname } from '@/i18n/routing';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
+import type { Locale } from '@/i18n/routing';
 
 export function Footer() {
   const t = useTranslations('footer');
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const year = new Date().getFullYear();
+
+  const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
 
   return (
     <footer className="bg-dark-800 text-gray-400 pt-16 pb-8 mt-auto">
       <div className="max-w-6xl mx-auto px-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-white/10">
-          {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <p className="text-white font-bold text-lg mb-3">Pricentrix</p>
             <p className="text-sm leading-relaxed">{t('tagline')}</p>
           </div>
 
-          {/* Product */}
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('product')}</p>
             <div className="flex flex-col gap-2 text-sm">
@@ -35,7 +37,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company */}
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('company')}</p>
             <div className="flex flex-col gap-2 text-sm">
@@ -51,7 +52,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Account */}
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('account')}</p>
             <div className="flex flex-col gap-2 text-sm">
@@ -76,20 +76,18 @@ export function Footer() {
             © {year} Pricentrix. {t('rights')}
           </p>
           <div className="flex gap-3">
-            <Link
-              href={pathname}
-              locale="es"
+            <button
+              onClick={() => switchLocale('es')}
               className={`px-2 py-1 rounded transition-colors ${locale === 'es' ? 'text-white' : 'hover:text-white'}`}
             >
               ES
-            </Link>
-            <Link
-              href={pathname}
-              locale="en"
+            </button>
+            <button
+              onClick={() => switchLocale('en')}
               className={`px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-white' : 'hover:text-white'}`}
             >
               EN
-            </Link>
+            </button>
           </div>
         </div>
       </div>

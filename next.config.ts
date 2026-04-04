@@ -7,10 +7,12 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [],
   },
-  // beforeFiles rewrites map unprefixed Spanish paths to /es/* internally
-  // (transparent — URL stays as-is). Required for Next.js 16 dev mode where
-  // middleware doesn't rewrite the root path, and as a production safety net.
+  // Dev-only: Next.js 16 middleware doesn't rewrite unprefixed paths in dev mode.
+  // These rewrites let /,  /blog, etc. resolve to the es locale during `next dev`.
+  // In production the middleware handles locale routing — rewrites must be absent
+  // to avoid conflicting with next-intl's usePathname (which would see /es instead of /).
   async rewrites() {
+    if (process.env.NODE_ENV === 'production') return { beforeFiles: [] };
     return {
       beforeFiles: [
         { source: '/', destination: '/es' },
