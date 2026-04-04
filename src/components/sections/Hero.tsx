@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -72,9 +73,16 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Dashboard placeholder */}
-      <div className="max-w-4xl mx-auto mt-14 rounded-2xl bg-white/5 border border-white/10 h-72 flex items-center justify-center text-slate-400 text-sm">
-        {t('dashboardAlt')}
+      {/* Hero image */}
+      <div className="max-w-4xl mx-auto mt-14 rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/40 ring-1 ring-white/10">
+        <Image
+          src="/images/hero/pricentrix-analiza-los-prcios-de-tu-competencia-y-los-tuyos.png"
+          alt={t('dashboardAlt')}
+          width={1320}
+          height={743}
+          priority
+          className="w-full h-auto"
+        />
       </div>
     </section>
   );
