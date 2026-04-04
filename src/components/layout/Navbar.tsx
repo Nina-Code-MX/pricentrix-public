@@ -69,7 +69,7 @@ export function Navbar() {
           <Link href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('blog')}
           </Link>
-          <Link href="/contacto" className={`text-sm transition-colors duration-300 ${linkColor}`}>
+          <Link href="/contact" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('contact')}
           </Link>
         </div>
@@ -135,7 +135,7 @@ export function Navbar() {
             {t('blog')}
           </Link>
           <Link
-            href="/contacto"
+            href="/contact"
             className="text-sm text-content-secondary"
             onClick={() => setOpen(false)}
           >

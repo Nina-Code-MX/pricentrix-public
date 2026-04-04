@@ -9,7 +9,10 @@ export const routing = defineRouting({
     '/': '/',
     '/blog': '/blog',
     '/blog/[slug]': '/blog/[slug]',
-    '/contacto': '/contacto',
+    '/contact': {
+      es: '/contacto',
+      en: '/contact',
+    },
     '/free-trial': {
       es: '/prueba-gratis',
       en: '/free-trial',

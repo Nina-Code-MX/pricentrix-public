@@ -63,7 +63,7 @@ export function Hero() {
             {t('ctaPrimary')}
           </Link>
           <Link
-            href="/contacto"
+            href="/contact"
             className="px-6 py-3 rounded-xl border border-white/20 text-white hover:bg-white/10 font-semibold transition-colors backdrop-blur-sm"
           >
             {t('ctaSecondary')}

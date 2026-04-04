@@ -14,7 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push(
       { url: base, changeFrequency: 'weekly', priority: 1.0 },
       { url: `${base}/blog`, changeFrequency: 'daily', priority: 0.8 },
-      { url: `${base}/contacto`, changeFrequency: 'monthly', priority: 0.5 },
+      {
+        url: `${base}${locale === routing.defaultLocale ? '/contacto' : '/contact'}`,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+      }
     );
 
     // Blog posts

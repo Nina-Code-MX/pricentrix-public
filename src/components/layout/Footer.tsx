@@ -50,13 +50,13 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('company')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              <Link href="/contact" className="hover:text-white transition-colors">
                 {t('contact')}
               </Link>
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              <Link href="/contact" className="hover:text-white transition-colors">
                 {t('demo')}
               </Link>
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              <Link href="/contact" className="hover:text-white transition-colors">
                 {t('support')}
               </Link>
             </div>

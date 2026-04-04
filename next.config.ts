@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
         { source: '/', destination: '/es' },
         { source: '/blog', destination: '/es/blog' },
         { source: '/blog/:slug', destination: '/es/blog/:slug' },
-        { source: '/contacto', destination: '/es/contacto' },
+        { source: '/contacto', destination: '/es/contact' },
         { source: '/prueba-gratis', destination: '/es/free-trial' },
       ],
     };

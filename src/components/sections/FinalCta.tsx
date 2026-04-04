@@ -16,7 +16,7 @@ export function FinalCta() {
         </div>
 
         <Link
-          href="/contacto"
+          href="/contact"
           className="inline-block px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-lg transition-colors shadow-lg"
         >
           {t('button')}
