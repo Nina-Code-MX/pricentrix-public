@@ -32,4 +32,8 @@ jobs:
           AWS_SES_ACCESS_KEY_ID: ${{ secrets.AWS_SES_ACCESS_KEY_ID }}
           AWS_SES_SECRET_ACCESS_KEY: ${{ secrets.AWS_SES_SECRET_ACCESS_KEY }}
           SES_FROM_EMAIL: ${{ secrets.SES_FROM_EMAIL }}
+          SES_CONFIGURATION_SET: ${{ secrets.SES_CONFIGURATION_SET }}
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          PUBLIC_REGISTER_KEY: ${{ secrets.PUBLIC_REGISTER_KEY }}
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
+          RECAPTCHA_SECRET_KEY: ${{ secrets.RECAPTCHA_SECRET_KEY }}
