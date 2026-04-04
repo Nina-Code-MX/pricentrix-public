@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getPostBySlug, getPostSlugs, getAlternatePosts } from '@/lib/blog';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -11,11 +11,7 @@ import { routing } from '@/i18n/routing';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
 
 // generateStaticParams receives plain parent params (not a Promise)
-export async function generateStaticParams({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const slugs = getPostSlugs(params.locale);
   return slugs.map((slug) => ({ slug }));
 }
@@ -68,6 +64,7 @@ export default async function BlogPostPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const post = getPostBySlug(slug, locale);
   if (!post) notFound();
 
@@ -77,7 +74,10 @@ export default async function BlogPostPage({
   const breadcrumbs = [
     { name: 'Home', url: locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}` },
     { name: t('title'), url: `${locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`}/blog` },
-    { name: post.title, url: `${locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`}/blog/${post.slug}` },
+    {
+      name: post.title,
+      url: `${locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`}/blog/${post.slug}`,
+    },
   ];
 
   return (
@@ -87,7 +87,10 @@ export default async function BlogPostPage({
 
       <div className="max-w-3xl mx-auto px-5 py-16">
         {/* Back link */}
-        <Link href={`${base}/blog`} className="text-sm text-brand-600 hover:text-brand-800 transition-colors mb-8 inline-block">
+        <Link
+          href={`${base}/blog`}
+          className="text-sm text-brand-600 hover:text-brand-800 transition-colors mb-8 inline-block"
+        >
           {t('backToBlog')}
         </Link>
 
@@ -96,7 +99,10 @@ export default async function BlogPostPage({
           {post.tags && post.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               {post.tags.map((tag) => (
-                <span key={tag} className="text-xs bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full">
+                <span
+                  key={tag}
+                  className="text-xs bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full"
+                >
                   {tag}
                 </span>
               ))}
@@ -122,7 +128,11 @@ export default async function BlogPostPage({
         {/* Cover image */}
         {post.image && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={post.image} alt={post.title} className="w-full rounded-2xl mb-10 object-cover max-h-96" />
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full rounded-2xl mb-10 object-cover max-h-96"
+          />
         )}
 
         {/* MDX Content */}
