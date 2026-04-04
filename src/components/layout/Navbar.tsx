@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
+import Image from 'next/image';
 
 export function Navbar() {
   const t = useTranslations('nav');
@@ -11,15 +12,28 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+
+  const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
+
+  // Pages with a full-bleed dark Hero start transparent; all others start opaque white.
+  const hasHero = pathname === '/';
+
+  // Track scroll position — only updated from the event callback (no direct setState in effect body).
+  const [isPageScrolled, setIsPageScrolled] = useState(false);
+  // Reset scroll tracking when the route changes (valid React derived-state-from-props pattern).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (lastPath !== pathname) {
+    setLastPath(pathname);
+    setIsPageScrolled(false);
+  }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setIsPageScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
+  const scrolled = !hasHero || isPageScrolled;
 
   const headerBg = scrolled
     ? 'bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm'
@@ -41,7 +55,7 @@ export function Navbar() {
           href="/"
           className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
         >
-          Pricentrix
+          <Image src="/images/logo/logo-256x73.png" alt="Pricentrix logo" width={175} height={50} />
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
