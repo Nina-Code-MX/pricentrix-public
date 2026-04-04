@@ -184,5 +184,12 @@
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña",
     "tagline": "Inteligencia de precios para el ecommerce latinoamericano"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o fue movida. Verifica la URL o regresa al inicio.",
+    "goHome": "Ir al inicio",
+    "contactUs": "Contactar soporte"
   }
 }
