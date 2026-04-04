@@ -2,12 +2,11 @@
 
 import { useTranslations } from 'next-intl';
 import { useState, FormEvent } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { ReCaptchaProvider } from '@/components/ReCaptchaProvider';
+import { ReCaptchaProvider, useRecaptcha } from '@/components/ReCaptchaProvider';
 
 function ContactForm() {
   const t = useTranslations('contact');
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const executeRecaptcha = useRecaptcha();
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {

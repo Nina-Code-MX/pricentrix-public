@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useLocale, useTranslations } from 'next-intl';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { ReCaptchaProvider } from '@/components/ReCaptchaProvider';
+import { ReCaptchaProvider, useRecaptcha } from '@/components/ReCaptchaProvider';
 
 type FormValues = {
   account_name: string;
@@ -27,7 +26,7 @@ const passwordRules = [
 function FreeTrialForm() {
   const t = useTranslations('register');
   const locale = useLocale();
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const executeRecaptcha = useRecaptcha();
   const [serverError, setServerError] = useState<string | null>(null);
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
