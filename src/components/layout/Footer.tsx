@@ -1,8 +1,10 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import { useRouter } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
+import { getLocalizedUrl } from '@/lib/locale-url';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -11,8 +13,7 @@ export function Footer() {
   const router = useRouter();
   const year = new Date().getFullYear();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const switchLocale = (next: Locale) => router.replace(pathname as any, { locale: next });
+  const switchLocale = (next: Locale) => router.replace(getLocalizedUrl(pathname, next));
 
   return (
     <footer className="bg-dark-800 text-gray-400 pt-16 pb-8 mt-auto">

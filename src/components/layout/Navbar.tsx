@@ -3,8 +3,10 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import { useRouter } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
+import { getLocalizedUrl } from '@/lib/locale-url';
 
 export function Navbar() {
   const t = useTranslations('nav');
@@ -13,8 +15,7 @@ export function Navbar() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const switchLocale = (next: Locale) => router.replace(pathname as any, { locale: next });
+  const switchLocale = (next: Locale) => router.replace(getLocalizedUrl(pathname, next));
 
   // Pages with a full-bleed dark Hero start transparent; all others start opaque white.
   const hasHero = (pathname as string) === '/';
