@@ -1,7 +1,10 @@
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { NotFoundContent } from '@/components/NotFoundContent';
 
-// Catch-all: any path under [locale] that doesn't match a real page
-// calls notFound() to trigger [locale]/not-found.tsx with full site chrome.
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
+
 export default function CatchAll() {
-  notFound();
+  return <NotFoundContent />;
 }
