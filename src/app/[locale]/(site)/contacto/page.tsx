@@ -59,7 +59,10 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-content-primary mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-content-primary mb-1"
+              >
                 {t('emailLabel')}
               </label>
               <input
@@ -74,7 +77,10 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-content-primary mb-1">
+            <label
+              htmlFor="company"
+              className="block text-sm font-medium text-content-primary mb-1"
+            >
               {t('companyLabel')}
             </label>
             <input
@@ -87,7 +93,10 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-content-primary mb-1">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-content-primary mb-1"
+            >
               {t('messageLabel')}
             </label>
             <textarea

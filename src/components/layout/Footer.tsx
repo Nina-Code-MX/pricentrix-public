@@ -1,7 +1,8 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import NextLink from 'next/link';
+import { usePathname, useRouter } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 
 export function Footer() {
@@ -25,30 +26,30 @@ export function Footer() {
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('product')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/#features" className="hover:text-white transition-colors">
+              <NextLink href="/#features" className="hover:text-white transition-colors">
                 {t('monitoring')}
-              </Link>
-              <Link href="/#features" className="hover:text-white transition-colors">
+              </NextLink>
+              <NextLink href="/#features" className="hover:text-white transition-colors">
                 {t('matching')}
-              </Link>
-              <Link href="/#features" className="hover:text-white transition-colors">
+              </NextLink>
+              <NextLink href="/#features" className="hover:text-white transition-colors">
                 {t('reports')}
-              </Link>
+              </NextLink>
             </div>
           </div>
 
           <div>
             <p className="text-white font-semibold text-sm mb-3">{t('company')}</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              <NextLink href="/contacto" className="hover:text-white transition-colors">
                 {t('contact')}
-              </Link>
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              </NextLink>
+              <NextLink href="/contacto" className="hover:text-white transition-colors">
                 {t('demo')}
-              </Link>
-              <Link href="/contacto" className="hover:text-white transition-colors">
+              </NextLink>
+              <NextLink href="/contacto" className="hover:text-white transition-colors">
                 {t('support')}
-              </Link>
+              </NextLink>
             </div>
           </div>
 

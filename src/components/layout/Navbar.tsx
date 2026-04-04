@@ -2,7 +2,8 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { Link, usePathname, useRouter } from '@/i18n/routing';
+import NextLink from 'next/link';
+import { usePathname, useRouter } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 import Image from 'next/image';
 
@@ -16,7 +17,7 @@ export function Navbar() {
   const switchLocale = (next: Locale) => router.replace(pathname, { locale: next });
 
   // Pages with a full-bleed dark Hero start transparent; all others start opaque white.
-  const hasHero = pathname === '/';
+  const hasHero = (pathname as string) === '/';
 
   // Track scroll position — only updated from the event callback (no direct setState in effect body).
   const [isPageScrolled, setIsPageScrolled] = useState(false);
@@ -51,23 +52,29 @@ export function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
       <nav className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link
+        <NextLink
           href="/"
           className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
         >
           <Image src="/images/logo/logo-256x73.png" alt="Pricentrix logo" width={175} height={50} />
-        </Link>
+        </NextLink>
 
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/#features" className={`text-sm transition-colors duration-300 ${linkColor}`}>
+          <NextLink
+            href="/#features"
+            className={`text-sm transition-colors duration-300 ${linkColor}`}
+          >
             {t('product')}
-          </Link>
-          <Link href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
+          </NextLink>
+          <NextLink href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('blog')}
-          </Link>
-          <Link href="/contacto" className={`text-sm transition-colors duration-300 ${linkColor}`}>
+          </NextLink>
+          <NextLink
+            href="/contacto"
+            className={`text-sm transition-colors duration-300 ${linkColor}`}
+          >
             {t('contact')}
-          </Link>
+          </NextLink>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -85,7 +92,7 @@ export function Navbar() {
               EN
             </button>
           </div>
-          <Link
+          <NextLink
             href="/contacto"
             className={`text-sm px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
               scrolled
@@ -94,7 +101,7 @@ export function Navbar() {
             }`}
           >
             {t('start')}
-          </Link>
+          </NextLink>
         </div>
 
         <button
@@ -116,27 +123,27 @@ export function Navbar() {
 
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-5 py-4 flex flex-col gap-4">
-          <Link
+          <NextLink
             href="/#features"
             className="text-sm text-content-secondary"
             onClick={() => setOpen(false)}
           >
             {t('product')}
-          </Link>
-          <Link
+          </NextLink>
+          <NextLink
             href="/blog"
             className="text-sm text-content-secondary"
             onClick={() => setOpen(false)}
           >
             {t('blog')}
-          </Link>
-          <Link
+          </NextLink>
+          <NextLink
             href="/contacto"
             className="text-sm text-content-secondary"
             onClick={() => setOpen(false)}
           >
             {t('contact')}
-          </Link>
+          </NextLink>
           <div className="flex gap-2 pt-2 border-t border-gray-100">
             <button
               onClick={() => {
@@ -157,13 +164,13 @@ export function Navbar() {
               EN
             </button>
           </div>
-          <Link
+          <NextLink
             href="/contacto"
             className="text-sm px-4 py-2 rounded-lg bg-brand-700 text-white text-center font-medium"
             onClick={() => setOpen(false)}
           >
             {t('start')}
-          </Link>
+          </NextLink>
         </div>
       )}
     </header>
