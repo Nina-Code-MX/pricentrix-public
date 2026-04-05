@@ -111,6 +111,8 @@
     "contact": "Contacto",
     "demo": "Demo",
     "support": "Soporte",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
     "account": "Cuenta",
     "login": "Iniciar sesión",
     "signup": "Crear cuenta",
@@ -194,5 +196,227 @@
     "description": "La página que buscas no existe o fue movida. Verifica la URL o regresa al inicio.",
     "goHome": "Ir al inicio",
     "contactUs": "Contactar soporte"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: 5 de abril de 2026",
+    "s1Title": "1. Introducción",
+    "s1p1": "Pricentrix (\"nosotros\", \"nuestro\", \"nos\") proporciona una plataforma SaaS que ayuda a empresas a monitorear precios de competidores, mapear productos y analizar datos de precios.",
+    "s1p2": "Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información cuando utilizas nuestra plataforma.",
+    "s2Title": "2. Información que Recopilamos",
+    "s21Title": "2.1 Datos de Cuenta y Usuario",
+    "s21intro": "Al crear una cuenta, podemos recopilar:",
+    "s21items": [
+      "Nombre",
+      "Correo electrónico",
+      "Nombre de empresa",
+      "Credenciales de acceso",
+      "Datos de configuración de cuenta"
+    ],
+    "s22Title": "2.2 Datos de Productos y Negocio",
+    "s22p1": "Al usar Pricentrix, puedes proporcionar:",
+    "s22items": [
+      "Tu catálogo de productos (nombres, precios, URLs, metadatos)",
+      "URLs y dominios de competidores",
+      "Mapeos de productos y clasificaciones internas"
+    ],
+    "s22p2": "Estos datos se procesan para habilitar las funciones de comparación de precios y reportes.",
+    "s23Title": "2.3 Datos Recopilados Automáticamente",
+    "s23intro": "Podemos recopilar automáticamente:",
+    "s23items": [
+      "Dirección IP",
+      "Información del navegador y dispositivo",
+      "Registros de uso (acciones dentro de la plataforma)",
+      "Registros de ejecución de tareas (importaciones, scraping, matching)"
+    ],
+    "s24Title": "2.4 Datos de Fuentes Externas",
+    "s24p1": "Cuando usas funciones de scraping o importación por URL, recopilamos:",
+    "s24items": [
+      "Datos de productos disponibles públicamente en sitios de competidores",
+      "Precios y metadatos de productos desde las URLs enviadas"
+    ],
+    "s24p2": "Estos datos se recopilan únicamente a partir de acciones iniciadas por el usuario.",
+    "s3Title": "3. Cómo Usamos tu Información",
+    "s3intro": "Usamos los datos recopilados para:",
+    "s3items": [
+      "Proveer la funcionalidad principal de la plataforma (importación de catálogo, matching, reportes)",
+      "Procesar tareas como importaciones y scraping",
+      "Generar análisis y reportes de precios",
+      "Mejorar funcionalidades y rendimiento del producto",
+      "Garantizar la seguridad de la plataforma y prevenir abusos",
+      "Brindar soporte al cliente"
+    ],
+    "s4Title": "4. Propiedad de los Datos",
+    "s4items": [
+      "Conservas la propiedad total de tus datos de productos y negocio.",
+      "Pricentrix no reclama propiedad sobre los datos que subas o generes.",
+      "Actuamos como procesador de datos en tu nombre."
+    ],
+    "s5Title": "5. Compartición de Datos",
+    "s5p1": "No vendemos tus datos.",
+    "s5intro": "Podemos compartir datos únicamente en estos casos:",
+    "s5items": [
+      "Con proveedores de servicios (hosting, analíticas, infraestructura)",
+      "Cuando lo requiera la ley o un proceso legal",
+      "Para proteger derechos, seguridad o prevenir fraude"
+    ],
+    "s6Title": "6. Aislamiento de Datos Multi-Tenant",
+    "s6intro": "Pricentrix opera como un sistema multi-tenant:",
+    "s6items": [
+      "Los datos de cada cuenta están aislados lógicamente",
+      "Implementamos salvaguardas para prevenir acceso entre cuentas",
+      "Los sistemas internos aplican separación de datos a nivel de cuenta"
+    ],
+    "s7Title": "7. Retención de Datos",
+    "s7intro": "Conservamos tus datos:",
+    "s7items": [
+      "Mientras tu cuenta esté activa",
+      "Según sea necesario para prestar los servicios",
+      "Según lo requieran obligaciones legales o de cumplimiento"
+    ],
+    "s7p1": "Puedes solicitar la eliminación de tus datos en cualquier momento.",
+    "s8Title": "8. Seguridad",
+    "s8intro": "Implementamos medidas técnicas y organizativas razonables, incluyendo:",
+    "s8items": [
+      "Controles de autenticación y sesión",
+      "Restricciones de acceso a la API",
+      "Limitación de tasa y monitoreo",
+      "Protecciones a nivel de infraestructura"
+    ],
+    "s8p1": "Sin embargo, ningún sistema es 100% seguro.",
+    "s9Title": "9. Tus Derechos",
+    "s9intro": "Según tu jurisdicción, puedes:",
+    "s9items": [
+      "Acceder a tus datos",
+      "Solicitar corrección o eliminación",
+      "Oponerte al procesamiento",
+      "Solicitar portabilidad de datos"
+    ],
+    "s9p1": "Para ejercer tus derechos, contacta:",
+    "s10Title": "10. Cookies y Rastreo",
+    "s10intro": "Usamos cookies para:",
+    "s10items": [
+      "Sesiones de autenticación",
+      "Funcionalidad de la plataforma",
+      "Análisis y monitoreo de rendimiento"
+    ],
+    "s10p1": "Puedes controlar las cookies desde la configuración de tu navegador.",
+    "s11Title": "11. Servicios de Terceros",
+    "s11p1": "Pricentrix utiliza los siguientes proveedores externos para operar la plataforma:",
+    "s12Title": "12. Cambios a Esta Política",
+    "s12p1": "Podemos actualizar esta Política de Privacidad periódicamente. Las actualizaciones se publicarán en esta página con una fecha revisada.",
+    "s13Title": "13. Contacto",
+    "s13p1": "Para preguntas relacionadas con privacidad:",
+    "s13email": "soporte@pricentrix.com",
+    "s13company": "Pricentrix",
+    "s10p2": "Utilizamos cookie-script.com para la gestión del consentimiento de cookies y el cumplimiento de regulaciones de privacidad.",
+    "s10p3": "Puedes controlar las cookies desde la configuración de tu navegador o mediante el banner de consentimiento.",
+    "s11providers": [
+      "Amazon Web Services (AWS) — EC2 y S3 en la región us-west-2 (Oregón, EE. UU.) para infraestructura de cómputo y almacenamiento.",
+      "Vercel — Despliegue y entrega del sitio web público (pricentrix.com).",
+      "cookie-script.com — Gestión de consentimiento de cookies y cumplimiento de normativas de privacidad."
+    ],
+    "s11p2": "Cada proveedor procesa datos bajo sus propias políticas de privacidad. Te recomendamos revisarlas si tienes preguntas sobre el tratamiento de tus datos por parte de estos servicios."
+  },
+  "terms": {
+    "title": "Términos de Uso",
+    "lastUpdated": "Última actualización: 5 de abril de 2026",
+    "s1Title": "1. Aceptación de los Términos",
+    "s1p1": "Al acceder o usar Pricentrix, aceptas estos Términos de Uso.",
+    "s1p2": "Si no estás de acuerdo, no debes usar la plataforma.",
+    "s2Title": "2. Descripción del Servicio",
+    "s2intro": "Pricentrix es una plataforma SaaS que permite a los usuarios:",
+    "s2items": [
+      "Importar catálogos de productos",
+      "Rastrear precios de competidores",
+      "Relacionar productos entre catálogos",
+      "Generar reportes de comparación de precios"
+    ],
+    "s3Title": "3. Responsabilidades de la Cuenta",
+    "s3intro": "Te comprometes a:",
+    "s3items": [
+      "Proporcionar información precisa",
+      "Mantener las credenciales seguras",
+      "Ser responsable de toda la actividad bajo tu cuenta"
+    ],
+    "s4Title": "4. Uso Aceptable",
+    "s4intro": "Aceptas NO:",
+    "s4items": [
+      "Usar la plataforma para fines ilegales",
+      "Violar derechos de terceros",
+      "Intentar acceder a datos de otros usuarios",
+      "Interferir con la integridad o rendimiento del sistema"
+    ],
+    "s5Title": "5. Datos y Contenido",
+    "s51Title": "5.1 Tus Datos",
+    "s51items": [
+      "Eres responsable de todos los datos que subas",
+      "Debes tener derechos sobre los datos enviados (ej., URLs)"
+    ],
+    "s52Title": "5.2 Datos de Competidores",
+    "s52items": [
+      "Pricentrix procesa datos disponibles públicamente desde las URLs que proporcionas",
+      "Eres responsable de cumplir con las leyes aplicables y los términos de cada sitio web"
+    ],
+    "s6Title": "6. Aviso sobre Scraping y Recopilación de Datos",
+    "s6p1": "Pricentrix proporciona herramientas para recopilar datos disponibles públicamente.",
+    "s6intro": "Reconoces que:",
+    "s6items": [
+      "Eres responsable del uso que hagas de estas herramientas",
+      "Debes cumplir con las leyes aplicables y los términos de los sitios web",
+      "Pricentrix no es responsable del mal uso de las funciones de scraping"
+    ],
+    "s7Title": "7. Disponibilidad del Servicio",
+    "s7p1": "Nos esforzamos por brindar un servicio confiable, pero no garantizamos:",
+    "s7items": [
+      "Disponibilidad continua del servicio",
+      "Operación libre de errores",
+      "Procesamiento inmediato de tareas (las importaciones y el scraping pueden tardar)"
+    ],
+    "s8Title": "8. Suscripción y Facturación",
+    "s8intro": "Si aplica:",
+    "s8items": [
+      "Los servicios pueden ofrecerse bajo planes de suscripción",
+      "Los límites (ej., productos, competidores) dependen de tu plan",
+      "Los pagos no son reembolsables, salvo que se indique lo contrario"
+    ],
+    "s9Title": "9. Propiedad Intelectual",
+    "s9p1": "Todos los componentes de la plataforma (software, interfaz, marca) son propiedad de Pricentrix.",
+    "s9intro": "No puedes:",
+    "s9items": [
+      "Copiar, modificar o distribuir la plataforma",
+      "Realizar ingeniería inversa del sistema"
+    ],
+    "s10Title": "10. Terminación",
+    "s10intro": "Podemos suspender o cancelar cuentas si:",
+    "s10items": [
+      "Se violan los Términos",
+      "Se detecta abuso o mal uso",
+      "Lo requieren obligaciones legales"
+    ],
+    "s10p1": "Puedes cancelar tu cuenta en cualquier momento.",
+    "s11Title": "11. Limitación de Responsabilidad",
+    "s11intro": "En la máxima medida permitida por la ley:",
+    "s11items": [
+      "Pricentrix no es responsable por daños indirectos o consecuentes",
+      "No somos responsables de las decisiones comerciales tomadas con base en los datos de la plataforma"
+    ],
+    "s12Title": "12. Descargo de Responsabilidad",
+    "s12p1": "La plataforma proporciona únicamente análisis informativo de precios.",
+    "s12intro": "No garantizamos:",
+    "s12items": [
+      "La exactitud de los datos de competidores",
+      "La completitud de la información obtenida por scraping",
+      "Resultados comerciales derivados de decisiones de precio"
+    ],
+    "s13Title": "13. Cambios en los Términos",
+    "s13p1": "Podemos actualizar estos Términos. El uso continuado implica la aceptación de los cambios.",
+    "s14Title": "14. Ley Aplicable",
+    "s14p1": "Estos Términos se rigen por las leyes de México.",
+    "s15Title": "15. Contacto",
+    "s15p1": "Para preguntas relacionadas con estos Términos:",
+    "s15email": "soporte@pricentrix.com",
+    "s15company": "Pricentrix",
+    "s7p2": "La plataforma está alojada en Amazon Web Services (EC2 y S3, región us-west-2). El sitio público opera sobre Vercel. La disponibilidad del servicio puede verse afectada por interrupciones en estos proveedores de infraestructura."
   }
 }

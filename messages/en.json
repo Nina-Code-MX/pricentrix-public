@@ -111,6 +111,8 @@
     "contact": "Contact",
     "demo": "Demo",
     "support": "Support",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
     "account": "Account",
     "login": "Log in",
     "signup": "Create account",
@@ -194,5 +196,220 @@
     "description": "The page you're looking for doesn't exist or was moved. Check the URL or head back home.",
     "goHome": "Back to home",
     "contactUs": "Contact support"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: April 5, 2026",
+    "s1Title": "1. Introduction",
+    "s1p1": "Pricentrix (\"we\", \"our\", \"us\") provides a SaaS platform that helps businesses monitor competitor prices, map products, and analyze pricing data.",
+    "s1p2": "This Privacy Policy explains how we collect, use, and protect your information when you use our platform.",
+    "s2Title": "2. Information We Collect",
+    "s21Title": "2.1 Account and User Data",
+    "s21intro": "When you create an account, we may collect:",
+    "s21items": [
+      "Name",
+      "Email address",
+      "Company name",
+      "Login credentials",
+      "Account configuration data"
+    ],
+    "s22Title": "2.2 Product and Business Data",
+    "s22p1": "As part of using Pricentrix, you may provide:",
+    "s22items": [
+      "Your product catalog (names, prices, URLs, metadata)",
+      "Competitor URLs and domains",
+      "Product mappings and internal classifications"
+    ],
+    "s22p2": "This data is processed to enable price comparison and reporting features.",
+    "s23Title": "2.3 Automatically Collected Data",
+    "s23intro": "We may automatically collect:",
+    "s23items": [
+      "IP address",
+      "Browser and device information",
+      "Usage logs (actions within the platform)",
+      "Job execution logs (imports, scraping, matching)"
+    ],
+    "s24Title": "2.4 Data from External Sources",
+    "s24p1": "When you use scraping or URL import features, we collect:",
+    "s24items": [
+      "Publicly available product data from competitor websites",
+      "Product pricing and metadata from submitted URLs"
+    ],
+    "s24p2": "This data is collected only based on user-initiated actions.",
+    "s3Title": "3. How We Use Your Information",
+    "s3intro": "We use collected data to:",
+    "s3items": [
+      "Provide core platform functionality (catalog import, matching, reporting)",
+      "Process jobs such as imports and scraping",
+      "Generate pricing insights and reports",
+      "Improve product features and performance",
+      "Ensure platform security and prevent abuse",
+      "Provide customer support"
+    ],
+    "s4Title": "4. Data Ownership",
+    "s4items": [
+      "You retain full ownership of your own product and business data.",
+      "Pricentrix does not claim ownership over your uploaded or generated data.",
+      "We act as a data processor on your behalf."
+    ],
+    "s5Title": "5. Data Sharing",
+    "s5p1": "We do not sell your data.",
+    "s5intro": "We may share data only in these cases:",
+    "s5items": [
+      "With service providers (hosting, analytics, infrastructure)",
+      "When required by law or legal process",
+      "To protect rights, security, or prevent fraud"
+    ],
+    "s6Title": "6. Multi-Tenant Data Isolation",
+    "s6intro": "Pricentrix operates as a multi-tenant system:",
+    "s6items": [
+      "Each account's data is logically isolated",
+      "We implement safeguards to prevent cross-account access",
+      "Internal systems enforce account-level data separation"
+    ],
+    "s7Title": "7. Data Retention",
+    "s7intro": "We retain your data:",
+    "s7items": [
+      "While your account is active",
+      "As needed to provide services",
+      "As required for legal or compliance purposes"
+    ],
+    "s7p1": "You may request deletion of your data at any time.",
+    "s8Title": "8. Security",
+    "s8intro": "We implement reasonable technical and organizational measures, including:",
+    "s8items": [
+      "Authentication and session controls",
+      "API access restrictions",
+      "Rate limiting and monitoring",
+      "Infrastructure-level protections"
+    ],
+    "s8p1": "However, no system is 100% secure.",
+    "s9Title": "9. Your Rights",
+    "s9intro": "Depending on your jurisdiction, you may:",
+    "s9items": [
+      "Access your data",
+      "Request correction or deletion",
+      "Object to processing",
+      "Request data portability"
+    ],
+    "s9p1": "To exercise your rights, contact:",
+    "s10Title": "10. Cookies and Tracking",
+    "s10intro": "We use cookies for:",
+    "s10items": [
+      "Authentication sessions",
+      "Platform functionality",
+      "Analytics and performance monitoring"
+    ],
+    "s10p1": "You can control cookies via browser settings.",
+    "s11Title": "11. Third-Party Services",
+    "s11p1": "Pricentrix relies on the following third-party providers to operate the platform:",
+    "s12Title": "12. Changes to This Policy",
+    "s12p1": "We may update this Privacy Policy periodically. Updates will be posted on this page with a revised date.",
+    "s13Title": "13. Contact",
+    "s13p1": "For privacy-related questions:",
+    "s13email": "soporte@pricentrix.com",
+    "s13company": "Pricentrix",
+    "s10p2": "We use cookie-script.com for cookie consent management and privacy regulation compliance.",
+    "s10p3": "You can control cookies via browser settings or through the consent banner.",
+    "s11providers": [
+      "Amazon Web Services (AWS) — EC2 and S3 in the us-west-2 region (Oregon, USA) for compute and storage infrastructure.",
+      "Vercel — Deployment and delivery of the public website (pricentrix.com).",
+      "cookie-script.com — Cookie consent management and privacy regulation compliance."
+    ],
+    "s11p2": "Each provider processes data under their own privacy policies. We recommend reviewing them if you have questions about how these services handle your data."
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: April 5, 2026",
+    "s1Title": "1. Acceptance of Terms",
+    "s1p1": "By accessing or using Pricentrix, you agree to these Terms of Use.",
+    "s1p2": "If you do not agree, you must not use the platform.",
+    "s2Title": "2. Description of Service",
+    "s2intro": "Pricentrix is a SaaS platform that allows users to:",
+    "s2items": [
+      "Import product catalogs",
+      "Track competitor pricing",
+      "Match products across catalogs",
+      "Generate pricing comparison reports"
+    ],
+    "s3Title": "3. Account Responsibilities",
+    "s3intro": "You agree to:",
+    "s3items": [
+      "Provide accurate information",
+      "Keep credentials secure",
+      "Be responsible for all activity under your account"
+    ],
+    "s4Title": "4. Acceptable Use",
+    "s4intro": "You agree NOT to:",
+    "s4items": [
+      "Use the platform for illegal purposes",
+      "Violate third-party rights",
+      "Attempt to access other users' data",
+      "Interfere with system integrity or performance"
+    ],
+    "s5Title": "5. Data and Content",
+    "s51Title": "5.1 Your Data",
+    "s51items": [
+      "You are responsible for all data you upload",
+      "You must have rights to use submitted data (e.g., URLs)"
+    ],
+    "s52Title": "5.2 Competitor Data",
+    "s52items": [
+      "Pricentrix processes publicly available data from URLs you provide",
+      "You are responsible for complying with applicable laws and website terms"
+    ],
+    "s6Title": "6. Scraping and Data Collection Disclaimer",
+    "s6p1": "Pricentrix provides tools to collect publicly available data.",
+    "s6intro": "You acknowledge:",
+    "s6items": [
+      "You are responsible for how you use these tools",
+      "You must comply with applicable laws and website terms",
+      "Pricentrix is not responsible for misuse of scraping features"
+    ],
+    "s7Title": "7. Service Availability",
+    "s7p1": "We aim to provide reliable service but do not guarantee:",
+    "s7items": [
+      "Continuous uptime",
+      "Error-free operation",
+      "Immediate job processing (imports, scraping may take time)"
+    ],
+    "s8Title": "8. Subscription and Billing",
+    "s8intro": "If applicable:",
+    "s8items": [
+      "Services may be offered under subscription plans",
+      "Limits (e.g., products, competitors) depend on your plan",
+      "Fees are non-refundable unless stated otherwise"
+    ],
+    "s9Title": "9. Intellectual Property",
+    "s9p1": "All platform components (software, UI, branding) are owned by Pricentrix.",
+    "s9intro": "You may not:",
+    "s9items": ["Copy, modify, or distribute the platform", "Reverse engineer the system"],
+    "s10Title": "10. Termination",
+    "s10intro": "We may suspend or terminate accounts if:",
+    "s10items": ["Terms are violated", "Abuse or misuse is detected", "Legal requirements apply"],
+    "s10p1": "You may terminate your account at any time.",
+    "s11Title": "11. Limitation of Liability",
+    "s11intro": "To the maximum extent permitted by law:",
+    "s11items": [
+      "Pricentrix is not liable for indirect or consequential damages",
+      "We are not responsible for business decisions made based on platform data"
+    ],
+    "s12Title": "12. Disclaimer",
+    "s12p1": "The platform provides informational pricing insights only.",
+    "s12intro": "We do not guarantee:",
+    "s12items": [
+      "Accuracy of competitor data",
+      "Completeness of scraped information",
+      "Business outcomes from pricing decisions"
+    ],
+    "s13Title": "13. Changes to Terms",
+    "s13p1": "We may update these Terms. Continued use implies acceptance.",
+    "s14Title": "14. Governing Law",
+    "s14p1": "These Terms shall be governed by the laws of Mexico.",
+    "s15Title": "15. Contact",
+    "s15p1": "For questions about these Terms:",
+    "s15email": "soporte@pricentrix.com",
+    "s15company": "Pricentrix",
+    "s7p2": "The platform is hosted on Amazon Web Services (EC2 and S3, us-west-2 region). The public website runs on Vercel. Service availability may be affected by outages at these infrastructure providers."
   }
 }

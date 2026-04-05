@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
         { source: '/blog/:slug', destination: '/es/blog/:slug' },
         { source: '/contacto', destination: '/es/contact' },
         { source: '/prueba-gratis', destination: '/es/free-trial' },
+        { source: '/privacidad', destination: '/es/privacy' },
+        { source: '/terminos', destination: '/es/terms' },
       ],
     };
   },

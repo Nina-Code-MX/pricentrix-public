@@ -18,6 +18,14 @@ export const routing = defineRouting({
       es: '/prueba-gratis',
       en: '/free-trial',
     },
+    '/privacy': {
+      es: '/privacidad',
+      en: '/privacy',
+    },
+    '/terms': {
+      es: '/terminos',
+      en: '/terms',
+    },
   },
 });
 

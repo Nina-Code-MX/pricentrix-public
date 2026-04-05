@@ -60,6 +60,12 @@ export function Footer() {
               <Link href="/contact" className="hover:text-white transition-colors">
                 {t('support')}
               </Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                {t('privacy')}
+              </Link>
+              <Link href="/terms" className="hover:text-white transition-colors">
+                {t('terms')}
+              </Link>
             </div>
           </div>
 
