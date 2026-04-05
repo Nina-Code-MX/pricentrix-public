@@ -58,7 +58,7 @@ export function Navbar() {
           className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
         >
           <Image
-            src="/images/logo/logo-256x73.png"
+            src={scrolled ? '/images/logo/logo-256x73.png' : '/images/logo/logo-256x73-light.png'}
             alt="Pricentrix logo"
             width={175}
             height={50}
