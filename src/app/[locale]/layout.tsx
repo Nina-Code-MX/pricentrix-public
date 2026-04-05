@@ -13,7 +13,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.pricentrix.com'),
     title: { default: t('siteName'), template: `%s — ${t('siteName')}` },
     description: t('homeDescription'),
     openGraph: { siteName: t('siteName'), locale },

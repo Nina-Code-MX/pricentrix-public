@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { headers } from 'next/headers';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import './globals.css';
 
@@ -22,12 +21,17 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={lang} suppressHydrationWarning>
       <body suppressHydrationWarning>{children}</body>
+      {/* Cookie consent — deferred until page is idle to avoid blocking FCP/LCP */}
       <Script
         src="//cdn.cookie-script.com/s/a9a7c1108716be3f699041c34369b200.js"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         charSet="UTF-8"
       />
-      <GoogleAnalytics gaId={GA_ID} />
+      {/* Google Analytics — loaded after idle to keep it off the critical path */}
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+      <Script id="google-analytics" strategy="lazyOnload">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+      </Script>
     </html>
   );
 }

@@ -17,7 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.pricentrix.com';
   const altLocale = locale === 'es' ? 'en' : 'es';
   const altUrl = altLocale === 'es' ? siteUrl : `${siteUrl}/${altLocale}`;
 

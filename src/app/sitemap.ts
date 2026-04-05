@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
 import { routing } from '@/i18n/routing';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.pricentrix.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

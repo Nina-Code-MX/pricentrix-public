@@ -1,6 +1,6 @@
 import type { BlogPost } from './blog';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.pricentrix.com';
 
 export function organizationSchema() {
   return {
@@ -65,9 +65,7 @@ export function blogPostingSchema(post: BlogPost, locale: string) {
     datePublished: post.date,
     dateModified: post.dateModified ?? post.date,
     ...(post.image && {
-      image: [
-        `${SITE_URL}${post.image}`,
-      ],
+      image: [`${SITE_URL}${post.image}`],
     }),
     author: post.author
       ? {

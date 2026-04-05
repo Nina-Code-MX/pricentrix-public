@@ -11,7 +11,7 @@ import { TableOfContents } from '@/components/blog/TableOfContents';
 import { MdxContent } from '@/components/blog/MdxContent';
 import { extractHeadings } from '@/lib/heading-id';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pricentrix.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.pricentrix.com';
 
 // generateStaticParams receives plain parent params (not a Promise)
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
