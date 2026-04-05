@@ -57,7 +57,13 @@ export function Navbar() {
           href="/"
           className={`font-bold text-xl tracking-tight transition-colors duration-300 ${logoColor}`}
         >
-          <Image src="/images/logo/logo-256x73.png" alt="Pricentrix logo" width={175} height={50} />
+          <Image
+            src="/images/logo/logo-256x73.png"
+            alt="Pricentrix logo"
+            width={175}
+            height={50}
+            priority
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-6">

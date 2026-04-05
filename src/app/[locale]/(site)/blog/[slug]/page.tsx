@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getPostBySlug, getPostSlugs, getAlternatePosts } from '@/lib/blog';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -169,10 +170,13 @@ export default async function BlogPostPage({
 
         {/* Cover image (optional, below author/date) */}
         {post.image && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={post.image}
             alt={post.title}
+            width={1536}
+            height={1024}
+            priority
+            sizes="(max-width: 768px) 100vw, 896px"
             className="w-full rounded-2xl mt-8 mb-2 object-cover max-h-[30rem] shadow-md"
           />
         )}

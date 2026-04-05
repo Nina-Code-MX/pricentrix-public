@@ -24,7 +24,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body suppressHydrationWarning>{children}</body>
       <Script
         src="//cdn.cookie-script.com/s/a9a7c1108716be3f699041c34369b200.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
         charSet="UTF-8"
       />
       <GoogleAnalytics gaId={GA_ID} />
