@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export function Problem() {
   const t = useTranslations('problem');
@@ -15,7 +16,10 @@ export function Problem() {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col gap-3">
             {items.map((key) => (
-              <div key={key} className="flex items-start gap-3 bg-surface-secondary border border-surface-tertiary rounded-xl p-4">
+              <div
+                key={key}
+                className="flex items-start gap-3 bg-surface-secondary border border-surface-tertiary rounded-xl p-4"
+              >
                 <span className="text-error mt-0.5 flex-shrink-0">✗</span>
                 <p className="text-content-secondary text-sm">{t(key)}</p>
               </div>
@@ -23,7 +27,12 @@ export function Problem() {
           </div>
 
           <div className="rounded-2xl bg-surface-tertiary border border-gray-200 h-72 flex items-center justify-center text-content-muted text-sm">
-            Imagen / screenshot
+            <Image
+              src="/images/brand/why-monitoring-competitor-prices-is-no-longer-optional.webp"
+              alt={t('title')}
+              width={558}
+              height={372}
+            />
           </div>
         </div>
       </div>

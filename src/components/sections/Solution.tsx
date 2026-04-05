@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export function Solution() {
   const t = useTranslations('solution');
@@ -7,7 +8,12 @@ export function Solution() {
     <section className="py-20 px-5 bg-surface-secondary">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="rounded-2xl bg-surface-tertiary border border-gray-200 h-80 flex items-center justify-center text-content-muted text-sm order-last md:order-first">
-          {t('imageAlt')}
+          <Image
+            src="/images/brand/pricentrix-turns-competitive-monitoring-into-actionable-decisions.webp"
+            alt={t('title')}
+            width={558}
+            height={372}
+          />
         </div>
 
         <div>
