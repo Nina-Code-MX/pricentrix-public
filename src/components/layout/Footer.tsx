@@ -89,9 +89,7 @@ export function Footer() {
         </div>
 
         <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs">
-          <p>
-            © {year} Pricentrix. {t('rights')}
-          </p>
+          <p>© 2024 Pricentrix. {t('rights')}</p>
           <div className="flex gap-3">
             <button
               onClick={() => switchLocale('es')}

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 export function FinalCta() {
   const t = useTranslations('cta');
@@ -11,8 +12,14 @@ export function FinalCta() {
         <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">{t('description')}</p>
 
         {/* Dashboard placeholder */}
-        <div className="rounded-2xl bg-white/5 border border-white/10 h-64 flex items-center justify-center text-slate-400 text-sm mb-10 mx-auto max-w-2xl">
-          Dashboard / Insights screenshot
+        <div className="rounded-2xl bg-white/5 border border-white/10 h-64 flex items-center justify-center text-slate-400 text-sm mb-10 mx-auto max-w-2xl overflow-hidden">
+          <Image
+            src="/images/brand/start-seeing-your-prices-against-the-market-with-more-clarity.webp"
+            alt={t('title')}
+            width={670}
+            height={274}
+            className="object-cover rounded-2xl"
+          />
         </div>
 
         <Link
