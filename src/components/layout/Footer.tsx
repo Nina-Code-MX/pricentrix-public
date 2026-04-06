@@ -78,12 +78,9 @@ export function Footer() {
               >
                 {t('login')}
               </a>
-              <a
-                href="https://app.pricentrix.com/register"
-                className="hover:text-white transition-colors"
-              >
+              <Link href="/free-trial" className="hover:text-white transition-colors">
                 {t('signup')}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
