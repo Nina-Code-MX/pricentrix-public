@@ -6,11 +6,14 @@
     "blogTitle": "Blog — Pricentrix",
     "blogDescription": "Articles on pricing strategy, ecommerce, and competitive intelligence.",
     "contactTitle": "Contact — Pricentrix",
-    "contactDescription": "Request a demo or get in touch to learn how Pricentrix can help your team."
+    "contactDescription": "Request a demo or get in touch to learn how Pricentrix can help your team.",
+    "pricingTitle": "Pricing Plans — Pricentrix",
+    "pricingDescription": "Choose the right Pricentrix plan for your ecommerce or retail team. Start free and scale from monitoring 20 to 5,000 products."
   },
   "nav": {
     "product": "Product",
     "blog": "Blog",
+    "pricing": "Pricing",
     "contact": "Contact",
     "login": "Log in",
     "start": "Get started free"
@@ -196,6 +199,41 @@
     "description": "The page you're looking for doesn't exist or was moved. Check the URL or head back home.",
     "goHome": "Back to home",
     "contactUs": "Contact support"
+  },
+  "pricing": {
+    "eyebrow": "Plans and pricing",
+    "title": "Pick the plan that matches your growth stage",
+    "description": "Track competitors, compare products, and improve margins with a plan that fits your catalog size.",
+    "monthly": "Pay monthly",
+    "yearly": "Pay yearly",
+    "yearlyDiscountNote": "Yearly billing = 10x monthly price (2 months free).",
+    "mostPopular": "Most popular",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "saveBadge": "Save 2 months",
+    "periodDays": "{days} days",
+    "periodMonthly": "Monthly billing",
+    "periodYearly": "Yearly billing",
+    "products": "Products: {count}",
+    "competitors": "Competitors: {count}",
+    "supportStandard": "Standard support",
+    "supportFast": "Less than 24 hours response",
+    "startFreeTrial": "Start free trial",
+    "contactCtaTitle": "Need a custom setup for your team?",
+    "contactCtaDescription": "Talk with us about onboarding, catalog migration, and the best plan for your pricing workflow.",
+    "contactCtaButton": "Contact sales",
+    "plans": {
+      "trial": { "name": "Trial Plan" },
+      "starter": { "name": "Starter" },
+      "ecommerce": { "name": "eCommerce" },
+      "enterprise": { "name": "Enterprise" }
+    },
+    "faq": {
+      "q1": "Can I switch plans later?",
+      "a1": "Yes. You can upgrade as your catalog or competitor coverage grows.",
+      "q2": "What happens after the trial?",
+      "a2": "You can continue with a paid plan and keep your monitoring data and setup."
+    }
   },
   "privacy": {
     "title": "Privacy Policy",

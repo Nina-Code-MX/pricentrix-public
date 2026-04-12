@@ -6,11 +6,14 @@
     "blogTitle": "Blog — Pricentrix",
     "blogDescription": "Artículos sobre pricing, ecommerce y estrategias competitivas.",
     "contactTitle": "Contacto — Pricentrix",
-    "contactDescription": "Solicita una demo o contáctanos para saber cómo Pricentrix puede ayudarte."
+    "contactDescription": "Solicita una demo o contáctanos para saber cómo Pricentrix puede ayudarte.",
+    "pricingTitle": "Planes y Precios — Pricentrix",
+    "pricingDescription": "Elige el plan de Pricentrix ideal para tu equipo ecommerce o retail. Empieza gratis y escala de 20 a 5,000 productos."
   },
   "nav": {
     "product": "Producto",
     "blog": "Blog",
+    "pricing": "Precios",
     "contact": "Contacto",
     "login": "Iniciar sesión",
     "start": "Comenzar gratis"
@@ -196,6 +199,41 @@
     "description": "La página que buscas no existe o fue movida. Verifica la URL o regresa al inicio.",
     "goHome": "Ir al inicio",
     "contactUs": "Contactar soporte"
+  },
+  "pricing": {
+    "eyebrow": "Planes y precios",
+    "title": "Elige el plan que se adapta a tu etapa de crecimiento",
+    "description": "Monitorea competidores, compara productos y mejora márgenes con un plan acorde al tamaño de tu catálogo.",
+    "monthly": "Pago mensual",
+    "yearly": "Pago anual",
+    "yearlyDiscountNote": "Facturación anual = 10x precio mensual (2 meses gratis).",
+    "mostPopular": "Más popular",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "saveBadge": "Ahorra 2 meses",
+    "periodDays": "{days} días",
+    "periodMonthly": "Facturación mensual",
+    "periodYearly": "Facturación anual",
+    "products": "Productos: {count}",
+    "competitors": "Competidores: {count}",
+    "supportStandard": "Soporte estándar",
+    "supportFast": "Respuesta en menos de 24 horas",
+    "startFreeTrial": "Comenzar prueba gratis",
+    "contactCtaTitle": "¿Necesitas una configuración personalizada para tu equipo?",
+    "contactCtaDescription": "Conversemos sobre onboarding, migración de catálogo y el mejor plan para tu proceso de pricing.",
+    "contactCtaButton": "Contactar ventas",
+    "plans": {
+      "trial": { "name": "Plan de Prueba" },
+      "starter": { "name": "Starter" },
+      "ecommerce": { "name": "eCommerce" },
+      "enterprise": { "name": "Enterprise" }
+    },
+    "faq": {
+      "q1": "¿Puedo cambiar de plan después?",
+      "a1": "Sí. Puedes subir de plan conforme crezcan tu catálogo y cobertura de competidores.",
+      "q2": "¿Qué pasa después del periodo de prueba?",
+      "a2": "Puedes continuar con un plan de pago y conservar la configuración y datos de monitoreo."
+    }
   },
   "privacy": {
     "title": "Política de Privacidad",

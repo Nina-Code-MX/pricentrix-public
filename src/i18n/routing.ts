@@ -18,6 +18,10 @@ export const routing = defineRouting({
       es: '/prueba-gratis',
       en: '/free-trial',
     },
+    '/pricing': {
+      es: '/precios',
+      en: '/pricing',
+    },
     '/privacy': {
       es: '/privacidad',
       en: '/privacy',

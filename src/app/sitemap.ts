@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: base, changeFrequency: 'weekly', priority: 1.0 },
       { url: `${base}/blog`, changeFrequency: 'daily', priority: 0.8 },
       {
+        url: `${base}${locale === routing.defaultLocale ? '/precios' : '/pricing'}`,
+        changeFrequency: 'weekly',
+        priority: 0.9,
+      },
+      {
         url: `${base}${locale === routing.defaultLocale ? '/contacto' : '/contact'}`,
         changeFrequency: 'monthly',
         priority: 0.5,

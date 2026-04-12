@@ -76,6 +76,9 @@ export function Navbar() {
           <Link href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('blog')}
           </Link>
+          <Link href="/pricing" className={`text-sm transition-colors duration-300 ${linkColor}`}>
+            {t('pricing')}
+          </Link>
           <Link href="/contact" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('contact')}
           </Link>
@@ -140,6 +143,13 @@ export function Navbar() {
             onClick={() => setOpen(false)}
           >
             {t('blog')}
+          </Link>
+          <Link
+            href="/pricing"
+            className="text-sm text-content-secondary"
+            onClick={() => setOpen(false)}
+          >
+            {t('pricing')}
           </Link>
           <Link
             href="/contact"
