@@ -28,6 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${base}${locale === routing.defaultLocale ? '/contacto' : '/contact'}`,
         changeFrequency: 'monthly',
         priority: 0.5,
+      },
+      {
+        url: `${base}${locale === routing.defaultLocale ? '/privacidad' : '/privacy'}`,
+        changeFrequency: 'monthly',
+        priority: 0.4,
+      },
+      {
+        url: `${base}${locale === routing.defaultLocale ? '/terminos' : '/terms'}`,
+        changeFrequency: 'monthly',
+        priority: 0.4,
       }
     );
 
