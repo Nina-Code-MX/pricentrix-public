@@ -119,3 +119,37 @@ export function blogListSchema(
     })),
   };
 }
+
+export function documentationPageSchema({
+  locale,
+  title,
+  description,
+  path,
+}: {
+  locale: string;
+  title: string;
+  description: string;
+  path: string;
+}) {
+  const base = locale === 'es' ? SITE_URL : `${SITE_URL}/${locale}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: title,
+    description,
+    url: `${base}${path}`,
+    inLanguage: locale,
+    author: {
+      '@type': 'Organization',
+      name: 'Pricentrix',
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Pricentrix',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+    },
+  };
+}

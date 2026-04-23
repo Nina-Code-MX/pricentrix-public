@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "docs:sync-check": "node scripts/check-documentation-sync.mjs",
     "prepare": "husky"
   },
   "dependencies": {

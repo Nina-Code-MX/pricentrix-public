@@ -13,6 +13,12 @@ export default function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
+  if (pathname === '/documentacion' || pathname === '/documentacion/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/es/documentation';
+    return NextResponse.rewrite(url);
+  }
+
   return handleI18nRouting(request);
 }
 

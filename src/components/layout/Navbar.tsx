@@ -14,6 +14,8 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [isPageScrolled, setIsPageScrolled] = useState(false);
+  const [lastPath, setLastPath] = useState(pathname);
 
   const switchLocale = (next: Locale) => router.replace(getLocalizedUrl(pathname, next));
 
@@ -21,9 +23,6 @@ export function Navbar() {
   const hasHero = (pathname as string) === '/';
 
   // Track scroll position — only updated from the event callback (no direct setState in effect body).
-  const [isPageScrolled, setIsPageScrolled] = useState(false);
-  // Reset scroll tracking when the route changes (valid React derived-state-from-props pattern).
-  const [lastPath, setLastPath] = useState(pathname);
   if (lastPath !== pathname) {
     setLastPath(pathname);
     setIsPageScrolled(false);
@@ -72,6 +71,12 @@ export function Navbar() {
             className={`text-sm transition-colors duration-300 ${linkColor}`}
           >
             {t('product')}
+          </Link>
+          <Link
+            href="/documentation"
+            className={`text-sm transition-colors duration-300 ${linkColor}`}
+          >
+            {t('documentation')}
           </Link>
           <Link href="/blog" className={`text-sm transition-colors duration-300 ${linkColor}`}>
             {t('blog')}
@@ -136,6 +141,13 @@ export function Navbar() {
             onClick={() => setOpen(false)}
           >
             {t('product')}
+          </Link>
+          <Link
+            href="/documentation"
+            className="text-sm text-content-secondary"
+            onClick={() => setOpen(false)}
+          >
+            {t('documentation')}
           </Link>
           <Link
             href="/blog"

@@ -3,6 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { slugify } from '@/lib/heading-id';
 import { Cta } from '@/components/blog/mdx/Cta';
 import { Callout } from '@/components/blog/mdx/Callout';
+import { CopyHeadingLinkButton } from '@/components/blog/mdx/CopyHeadingLinkButton';
 
 function childrenToText(children: React.ReactNode): string {
   if (typeof children === 'string') return children;
@@ -16,11 +17,18 @@ function childrenToText(children: React.ReactNode): string {
 }
 
 function makeHeading(Tag: 'h2' | 'h3' | 'h4') {
-  return function Heading({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return function Heading({
+    children,
+    className,
+    ...props
+  }: React.HTMLAttributes<HTMLHeadingElement>) {
     const id = slugify(childrenToText(children));
+    const headingClassName = ['group', className].filter(Boolean).join(' ');
+
     return (
-      <Tag id={id || undefined} {...props}>
-        {children}
+      <Tag id={id || undefined} className={headingClassName} {...props}>
+        <span>{children}</span>
+        {id ? <CopyHeadingLinkButton headingId={id} /> : null}
       </Tag>
     );
   };

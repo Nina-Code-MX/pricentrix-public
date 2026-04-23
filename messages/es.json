@@ -5,6 +5,8 @@
     "homeDescription": "Visualiza precios de competidores, relaciona productos comparables y optimiza tus márgenes con datos reales del mercado.",
     "blogTitle": "Blog — Pricentrix",
     "blogDescription": "Artículos sobre pricing, ecommerce y estrategias competitivas.",
+    "documentationTitle": "Documentación — Pricentrix",
+    "documentationDescription": "Documentación completa de Pricentrix sobre configuración, importaciones, matching de productos, reportes, facturación y soporte.",
     "contactTitle": "Contacto — Pricentrix",
     "contactDescription": "Solicita una demo o contáctanos para saber cómo Pricentrix puede ayudarte.",
     "pricingTitle": "Planes y Precios — Pricentrix",
@@ -12,6 +14,7 @@
   },
   "nav": {
     "product": "Producto",
+    "documentation": "Documentación",
     "blog": "Blog",
     "pricing": "Precios",
     "contact": "Contacto",
@@ -131,6 +134,19 @@
     "author": "Autor",
     "tableOfContents": "Tabla de contenido",
     "updatedOn": "Actualizado el"
+  },
+  "docs": {
+    "eyebrow": "Wiki y documentación",
+    "title": "Documentación de Pricentrix",
+    "description": "Guías operativas para configuración, importaciones, relación de productos, reportes, facturación, seguridad y solución de problemas.",
+    "languageSwitchLabel": "Idioma",
+    "languageSpanish": "Español",
+    "languageEnglish": "Inglés",
+    "sidebarTitle": "Secciones",
+    "sidebarDescription": "Navega por flujo de trabajo o salta directo a la seccion que necesitas.",
+    "mobileNavTitle": "Explorar secciones",
+    "backToTop": "Volver arriba",
+    "breadcrumbLabel": "Documentación"
   },
   "contact": {
     "title": "Hablemos",
