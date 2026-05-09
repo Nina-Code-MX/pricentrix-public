@@ -18,9 +18,21 @@ export function getLocalizedUrl(pathname: string, locale: Locale): string {
 
   let localizedPath: string | undefined;
 
+  // If only a dynamic template is available (e.g. '/blog/[slug]'),
+  // fallback to blog index instead of generating '/blog/[slug]'.
+  if (pathname === '/blog/[slug]') {
+    const blogIndexConfig = pathnameMap['/blog'];
+    localizedPath =
+      blogIndexConfig === undefined
+        ? '/blog'
+        : typeof blogIndexConfig === 'string'
+          ? blogIndexConfig
+          : (blogIndexConfig[locale] ?? '/blog');
+  }
+
   // Direct match (static routes)
   const config = pathnameMap[pathname];
-  if (config !== undefined) {
+  if (localizedPath === undefined && config !== undefined) {
     localizedPath = typeof config === 'string' ? config : (config[locale] ?? pathname);
   }
 

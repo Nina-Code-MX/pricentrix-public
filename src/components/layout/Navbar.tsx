@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Link, usePathname } from '@/i18n/routing';
+import { Link, routing, usePathname } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 import { getLocalizedUrl } from '@/lib/locale-url';
 
@@ -17,7 +17,48 @@ export function Navbar() {
   const [isPageScrolled, setIsPageScrolled] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
 
-  const switchLocale = (next: Locale) => router.replace(getLocalizedUrl(pathname, next));
+  const resolveSwitchTarget = async (next: Locale): Promise<string> => {
+    if (pathname !== '/blog/[slug]') {
+      return getLocalizedUrl(pathname, next);
+    }
+
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    const withoutLocale =
+      segments.length > 0 && routing.locales.includes(segments[0] as Locale)
+        ? segments.slice(1)
+        : segments;
+
+    const rawSlug = withoutLocale[0] === 'blog' ? withoutLocale[1] : undefined;
+    if (!rawSlug) {
+      return getLocalizedUrl('/blog', next);
+    }
+
+    const slug = decodeURIComponent(rawSlug);
+
+    try {
+      const query = new URLSearchParams({ slug, from: locale, to: next });
+      const res = await fetch(`/api/blog/translate-slug?${query.toString()}`, {
+        method: 'GET',
+        cache: 'no-store',
+      });
+
+      if (res.ok) {
+        const data = (await res.json()) as { slug?: string | null };
+        if (data.slug) {
+          return getLocalizedUrl(`/blog/${data.slug}`, next);
+        }
+      }
+    } catch {
+      // Ignore and fallback below.
+    }
+
+    return getLocalizedUrl('/blog', next);
+  };
+
+  const switchLocale = async (next: Locale) => {
+    const target = await resolveSwitchTarget(next);
+    router.replace(target);
+  };
 
   // Pages with a full-bleed dark Hero start transparent; all others start opaque white.
   const hasHero = (pathname as string) === '/';
@@ -92,14 +133,14 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <div className="flex items-center gap-1 text-xs font-medium">
             <button
-              onClick={() => switchLocale('es')}
-              className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'es' ? localeActive : localeInactive}`}
+              onClick={() => void switchLocale('es')}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors duration-300 ${locale === 'es' ? localeActive : localeInactive}`}
             >
               ES
             </button>
             <button
-              onClick={() => switchLocale('en')}
-              className={`px-2 py-1 rounded transition-colors duration-300 ${locale === 'en' ? localeActive : localeInactive}`}
+              onClick={() => void switchLocale('en')}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors duration-300 ${locale === 'en' ? localeActive : localeInactive}`}
             >
               EN
             </button>
@@ -173,7 +214,7 @@ export function Navbar() {
           <div className="flex gap-2 pt-2 border-t border-gray-100">
             <button
               onClick={() => {
-                switchLocale('es');
+                void switchLocale('es');
                 setOpen(false);
               }}
               className={`text-xs px-2 py-1 rounded ${locale === 'es' ? 'bg-brand-100 text-brand-700' : 'text-content-muted'}`}
@@ -182,7 +223,7 @@ export function Navbar() {
             </button>
             <button
               onClick={() => {
-                switchLocale('en');
+                void switchLocale('en');
                 setOpen(false);
               }}
               className={`text-xs px-2 py-1 rounded ${locale === 'en' ? 'bg-brand-100 text-brand-700' : 'text-content-muted'}`}

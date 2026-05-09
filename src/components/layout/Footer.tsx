@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { Link, usePathname } from '@/i18n/routing';
+import { Link, routing, usePathname } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 import { getLocalizedUrl } from '@/lib/locale-url';
 
@@ -13,7 +13,48 @@ export function Footer() {
   const router = useRouter();
   const year = new Date().getFullYear();
 
-  const switchLocale = (next: Locale) => router.replace(getLocalizedUrl(pathname, next));
+  const resolveSwitchTarget = async (next: Locale): Promise<string> => {
+    if (pathname !== '/blog/[slug]') {
+      return getLocalizedUrl(pathname, next);
+    }
+
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    const withoutLocale =
+      segments.length > 0 && routing.locales.includes(segments[0] as Locale)
+        ? segments.slice(1)
+        : segments;
+
+    const rawSlug = withoutLocale[0] === 'blog' ? withoutLocale[1] : undefined;
+    if (!rawSlug) {
+      return getLocalizedUrl('/blog', next);
+    }
+
+    const slug = decodeURIComponent(rawSlug);
+
+    try {
+      const query = new URLSearchParams({ slug, from: locale, to: next });
+      const res = await fetch(`/api/blog/translate-slug?${query.toString()}`, {
+        method: 'GET',
+        cache: 'no-store',
+      });
+
+      if (res.ok) {
+        const data = (await res.json()) as { slug?: string | null };
+        if (data.slug) {
+          return getLocalizedUrl(`/blog/${data.slug}`, next);
+        }
+      }
+    } catch {
+      // Ignore and fallback below.
+    }
+
+    return getLocalizedUrl('/blog', next);
+  };
+
+  const switchLocale = async (next: Locale) => {
+    const target = await resolveSwitchTarget(next);
+    router.replace(target);
+  };
 
   return (
     <footer className="bg-dark-800 text-gray-400 pt-16 pb-8 mt-auto">
@@ -89,14 +130,14 @@ export function Footer() {
           <p>© 2024 Pricentrix. {t('rights')}</p>
           <div className="flex gap-3">
             <button
-              onClick={() => switchLocale('es')}
-              className={`px-2 py-1 rounded transition-colors ${locale === 'es' ? 'text-white' : 'hover:text-white'}`}
+              onClick={() => void switchLocale('es')}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors ${locale === 'es' ? 'text-white' : 'hover:text-white'}`}
             >
               ES
             </button>
             <button
-              onClick={() => switchLocale('en')}
-              className={`px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-white' : 'hover:text-white'}`}
+              onClick={() => void switchLocale('en')}
+              className={`cursor-pointer px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-white' : 'hover:text-white'}`}
             >
               EN
             </button>
