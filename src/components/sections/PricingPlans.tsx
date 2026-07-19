@@ -21,7 +21,7 @@ const plans: Plan[] = [
   {
     key: 'trial',
     monthlyPrice: 0,
-    periodDays: 30,
+    periodDays: 90,
     products: '20',
     competitors: '5',
     supportKey: 'supportStandard',

@@ -10,18 +10,6 @@ export const routing = defineRouting({
     '/': '/',
     '/blog': '/blog',
     '/blog/[slug]': '/blog/[slug]',
-    '/en/blog/how-to-sell-more-in-ecommerce': {
-      es: '/blog/como-vender-mas-en-un-ecommerce',
-      en: '/blog/how-to-sell-more-in-ecommerce',
-    },
-    '/en/blog/ecommerce-pricing-strategies-profit-growth': {
-      es: '/blog/estrategias-pricing-ecommerce-rentabilidad',
-      en: '/blog/ecommerce-pricing-strategies-profit-growth',
-    },
-    '/en/blog/how-to-monitor-competitor-prices-ecommerce': {
-      es: '/blog/como-monitorear-precios-competencia-ecommerce',
-      en: '/blog/how-to-monitor-competitor-prices-ecommerce',
-    },
     '/documentation': {
       es: '/documentacion',
       en: '/documentation',

@@ -8,15 +8,19 @@ export function BlogCard({ post }: { post: BlogPostMeta }) {
 
   return (
     <article className="bg-surface border border-surface-tertiary rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
-      {post.image && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
-      )}
-      {!post.image && (
-        <div className="w-full h-48 bg-surface-tertiary flex items-center justify-center text-content-muted text-sm">
-          📝 Blog
-        </div>
-      )}
+      <Link
+        href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }}
+        aria-label={post.title}
+      >
+        {post.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
+        ) : (
+          <div className="w-full h-48 bg-surface-tertiary flex items-center justify-center text-content-muted text-sm">
+            📝 Blog
+          </div>
+        )}
+      </Link>
       <div className="p-6 flex flex-col flex-1">
         <p className="text-xs text-content-muted mb-2">
           {t('publishedOn')}{' '}
