@@ -20,6 +20,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={lang} suppressHydrationWarning>
+      <Script
+        id="MavaWebChat"
+        src="https://widget.mava.app"
+        strategy="beforeInteractive"
+        defer
+        widget-version="v2"
+        enable-sdk="false"
+        data-token="09b98ede72c6bfa6203b15b6aa79a455b4f65d0407a6a2e3e67620d32f090abe"
+      />
       <body suppressHydrationWarning>{children}</body>
       {/* Cookie consent — deferred until page is idle to avoid blocking FCP/LCP */}
       <Script
