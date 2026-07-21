@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useLocale, useTranslations } from 'next-intl';
 import { ReCaptchaProvider, useRecaptcha } from '@/components/ReCaptchaProvider';
+import { useRouter } from '@/i18n/routing';
 
 type FormValues = {
   account_name: string;
@@ -26,16 +27,11 @@ const passwordRules = [
 function FreeTrialForm() {
   const t = useTranslations('register');
   const locale = useLocale();
+  const router = useRouter();
   const executeRecaptcha = useRecaptcha();
   const [serverError, setServerError] = useState<string | null>(null);
-  const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
-  // Side-effect redirect lives in useEffect to satisfy React Compiler rules
-  useEffect(() => {
-    if (redirectUrl) window.location.href = redirectUrl;
-  }, [redirectUrl]);
 
   const schema = z
     .object({
@@ -59,13 +55,13 @@ function FreeTrialForm() {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
-  const passwordValue = watch('password', '');
+  const passwordValue = useWatch({ control, name: 'password', defaultValue: '' });
 
   const onSubmit = async (values: FormValues) => {
     setServerError(null);
@@ -83,9 +79,8 @@ function FreeTrialForm() {
         setServerError(data.error ?? t('errorTitle'));
         return;
       }
-      if (data.redirect_url) {
-        setRedirectUrl(data.redirect_url);
-      }
+
+      router.replace('/thank-you');
     } catch {
       setServerError(t('errorTitle'));
     }

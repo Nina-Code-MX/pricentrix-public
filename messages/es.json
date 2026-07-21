@@ -209,6 +209,21 @@
     "hidePassword": "Ocultar contraseña",
     "tagline": "Inteligencia de precios para el ecommerce latinoamericano"
   },
+  "thankYou": {
+    "pageTitle": "Revisa tu correo",
+    "eyebrow": "Registro casi completo",
+    "title": "Confirma tu correo para activar tu cuenta",
+    "description": "Ya creamos tu cuenta inicial. Ahora revisa tu bandeja de entrada y haz clic en el enlace de validación para completar el acceso.",
+    "tipTitle": "Qué hacer ahora",
+    "step1": "Abre el correo con el asunto de validación de Pricentrix.",
+    "step2": "Haz clic en el enlace para confirmar tu dirección de correo.",
+    "step3": "Después de validarlo, podrás iniciar sesión en tu cuenta.",
+    "note": "Si no lo ves en unos minutos, revisa spam, promociones o la bandeja de correo no deseado.",
+    "primaryCta": "Ir a iniciar sesión",
+    "secondaryCta": "Volver al inicio",
+    "support": "¿No recibiste el correo? Escríbenos y te ayudamos.",
+    "supportCta": "Contactar soporte"
+  },
   "notFound": {
     "code": "404",
     "title": "Página no encontrada",
